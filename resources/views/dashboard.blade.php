@@ -35,9 +35,13 @@
 
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link rel="stylesheet" href="/assets/css/demo.css">
-       
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+  
+        @yield('css')
+        @livewireStyles
     </head>
     <body data-background-color="dark">
+
         <div class="wrapper">
             <div class="main-header">
                 <!-- Logo Header -->
@@ -154,12 +158,28 @@
                                 <span class="sidebar-mini-icon">
                                     <i class="fa fa-ellipsis-h"></i>
                                 </span>
-                                <h4 class="text-section">Components</h4>
+                                <h4 class="text-section">MENÚ PRINCIPAL</h4>
+                            </li>
+                            <li class="nav-item">
+                                <a data-toggle="collapse" href="#productos">
+                                    <i class="fas fa-layer-group"></i>
+                                    <p>Mantenedores Principales</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="productos">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="{{route('product.index')}}">
+                                                <span class="sub-item">Productos</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a data-toggle="collapse" href="#base">
                                     <i class="fas fa-layer-group"></i>
-                                    <p>Mantenedores</p>
+                                    <p>Subsistema Almacén</p>
                                     <span class="caret"></span>
                                 </a>
                                 <div class="collapse" id="base">
@@ -177,6 +197,33 @@
                                         </li>
                                         <li>
                                             <a href="{{route('Almacenero.index')}}">
+                                                <span class="sub-item">Detalle Almacen</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a data-toggle="collapse" href="#compras">
+                                    <i class="fas fa-shopping-basket" style="color: #ffffff;"></i>
+                                    <p>Subsistema Compras</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="compras">
+                                    <ul class="nav nav-collapse">
+
+                                        <li>
+                                            <a href="">
+                                                <span class="sub-item">Almacen</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
+                                                <span class="sub-item">Montacargas</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="">
                                                 <span class="sub-item">Detalle Almacen</span>
                                             </a>
                                         </li>
@@ -462,7 +509,10 @@
     });
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+@yield('js')
+@livewireScripts
 </body>
     </html>
 

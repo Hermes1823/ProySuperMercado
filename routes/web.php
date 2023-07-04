@@ -6,6 +6,8 @@ use App\Http\Controllers\Usuario1Controller;
 use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\MontacargaController;
 use App\Http\Controllers\AlmaceneroController;
+use App\Http\Controllers\ProductController;
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -40,6 +42,15 @@ Route::get('Empleadocancelar/',[RegisteredUserController::class,'cancelar'])->na
 Route::resource('Roles',Rol2Controller::class);
 Route::get('Rolcancelar',[Rol2Controller::class,'cancelar'])->name('Rol.cancelar');
 Route::get('confirmarRol{id}/',[Rol2Controller::class,'confirmar'])->name('Rol.confirmar');
+
+//Productos
+Route::get('productos',[ProductController::class,'index'])->name('product.index');
+Route::post('productos', [ProductController::class, 'store'])->name('product.store');
+Route::post('productos/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::post('productos/update',[ProductController::class,'update'])->name('product.update');
+
+
+
 
 //Almacen
 Route::resource('Almacen',AlmacenController::class);
