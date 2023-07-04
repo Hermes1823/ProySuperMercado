@@ -29,7 +29,7 @@
             <table class="table table-hover" id="productTable">
                 <thead>
                     <tr>
-                        <th style="text-align: center">Nombre</th>
+                        <th style="text-align: center">Nombre </th>
                        
                         <th style="text-align: center">Stock</th>
                        
