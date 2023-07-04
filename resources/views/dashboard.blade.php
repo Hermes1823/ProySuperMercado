@@ -1,4 +1,4 @@
-<x-app-layout>
+
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -7,13 +7,13 @@
         <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 
         <title>SUPERMERCADO</title>
-        <link rel="icon" href="/assets/img/icon.ico" type="image/x-icon"/>
+        <link rel="icon" href="assets/img/icon.ico" type="image/x-icon"/>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="select2-dark-adminlte-theme.css">
 
 
         <!-- Fonts and icons -->
-        <script src="/assets/js/plugin/webfont/webfont.min.js"></script>
+        <script src="assets/js/plugin/webfont/webfont.min.js"></script>
         <script>
             WebFont.load({
                 google: {"families":["Lato:300,400,700,900"]},
@@ -24,7 +24,7 @@
             });
         </script>
          <!-- Custom fonts for this template-->
-        <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+        <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
         <link
             href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
             rel="stylesheet">
@@ -35,6 +35,7 @@
 
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link rel="stylesheet" href="/assets/css/demo.css">
+       
     </head>
     <body data-background-color="dark">
         <div class="wrapper">
@@ -394,18 +395,18 @@
         <script src="/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js"></script>
 
         <!-- jQuery Vector Maps -->
-        <script src="/assets/js/plugin/jqvmap/jquery.vmap.min.js"></script>
-        <script src="/assets/js/plugin/jqvmap/maps/jquery.vmap.world.js"></script>
+        <script src="{{asset('assets/js/plugin/jqvmap/jquery.vmap.min.js')}}"></script>
+        <script src="{{asset('assets/js/plugin/jqvmap/maps/jquery.vmap.world.js')}}"></script>
 
         <!-- Sweet Alert -->
         <script src="/assets/js/plugin/sweetalert/sweetalert.min.js"></script>
 
         <!-- Atlantis JS -->
-        <script src="/assets/js/atlantis.min.js"></script>
+        <script src="{{asset('assets/js/atlantis.min.js')}}"></script>
 
         <!-- Atlantis DEMO methods, don't include it in your project! -->
-        <script src="/assets/js/setting-demo.js"></script>
-        <script src="/assets/js/demo.js"></script>
+        <script src="{{asset('assets/js/setting-demo.js')}}"></script>
+        <script src="{{asset('assets/js/demo.js')}}"></script>
         <script>
             $('#lineChart').sparkline([102,109,120,99,110,105,115], {
                 type: 'line',
@@ -453,14 +454,15 @@
         }
     </script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            setTimeout(function() {
-                $(".emergente").fadeOut(750);
-            },1500);
-        });
-    </script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".emergente").fadeOut(750);
+        },1500);
+    });
+
+</script>
 
 </body>
     </html>
-</x-app-layout>
+
