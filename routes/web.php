@@ -7,6 +7,7 @@ use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\MontacargaController;
 use App\Http\Controllers\AlmaceneroController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RequisitionOrdersController;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -49,7 +50,11 @@ Route::post('productos', [ProductController::class, 'store'])->name('product.sto
 Route::post('productos/edit', [ProductController::class, 'edit'])->name('product.edit');
 Route::post('productos/update',[ProductController::class,'update'])->name('product.update');
 
-
+//Órdenes de Requisicón
+Route::get('requisitionOrders',[RequisitionOrdersController::class,'index'])->name('requisitionOrders.index');
+Route::get('requisitionOrders/create',[RequisitionOrdersController::class,'create'])->name('requisitionOrders.create');
+Route::post('requisitionOrders/create',[RequisitionOrdersController::class,'register'])->name('requisitionOrders.register');
+Route::post('requisitionOrders/show',[RequisitionOrdersController::class,'show'])->name('requisitionOrders.show');
 
 
 //Almacen

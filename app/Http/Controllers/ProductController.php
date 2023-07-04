@@ -72,12 +72,12 @@ class ProductController extends Controller
 
         if($existeNuevaImagen){
             $imagenNueva = $request->file('img');
-            $rutaGuardarImg= 'images/';
+            $rutaGuardarImg= 'imagenes/products/';
             $imagenProducto= date('YmdHis'). "." . $imagenNueva->getClientOriginalExtension();
             $imagenNueva->move($rutaGuardarImg,$imagenProducto);
             $producto->photo =$imagenProducto; 
             if($imagenAntigua!="producto_default.png"){
-                $rutaImagenEliminar=public_path('images/'.$imagenAntigua);
+                $rutaImagenEliminar=public_path('imagenes/products/'.$imagenAntigua);
                 
                 $existe=  File::exists(realpath($rutaImagenEliminar));
                 if($existe){

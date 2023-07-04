@@ -213,20 +213,11 @@
                                     <ul class="nav nav-collapse">
 
                                         <li>
-                                            <a href="">
-                                                <span class="sub-item">Almacen</span>
+                                            <a href="{{route('requisitionOrders.index')}}">
+                                                <span class="sub-item">Órdenes de Requisición</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="sub-item">Montacargas</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="">
-                                                <span class="sub-item">Detalle Almacen</span>
-                                            </a>
-                                        </li>
+                                       
                                     </ul>
                                 </div>
                             </li>

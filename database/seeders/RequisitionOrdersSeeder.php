@@ -17,11 +17,11 @@ class RequisitionOrdersSeeder extends Seeder
     {
         //
         RequisitionOrder::create([
-            'idColaborador' => 4,
+            'idColaborador' => 2,
             'estado' => 'sin cotización'
         ]);
         RequisitionOrder::create([
-            'idColaborador' => 4,
+            'idColaborador' => 2,
             'estado' => 'sin cotización'
         ]);
         
