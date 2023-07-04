@@ -45,12 +45,12 @@
                             <td class="tdProduct" style="text-align: center">{{ $product->marca }}</td>
                             <td class="tdProduct" style="text-align: center">{{ $product->categoria }}</td>
                             <td class="tdProduct" style="text-align: center">
-                                <img class="imgProduct" src="{{asset('images/'.$product->photo)}}" alt="Foto del producto" class="mr-2" width="100">
+                                <img class="imgProduct" src="{{asset('imagenes/products/'.$product->photo)}}" alt="Foto del producto" class="mr-2" width="100">
                             </td>
                             <td class="tdProduct"  style="text-align: center; position:relative">
                                 <div class="d-flex flex-column justify-content-center" style="position:absolute; top:0; right:0; left:0; bottom:0">
-                                    <i class="fas fa-plus-circle agregarProducto"  style="color:#0459c8;margin-bottom: 4px;"></i>
-                                    <i class="fas fa-minus-circle quitarProducto"  style="color: #da0b0b;margin-top:4px;"></i>
+                                    <i class="fas fa-plus-circle agregarProducto"  style="color: #fff70f;margin-bottom: 4px;"></i>
+                                    <i class="fas fa-minus-circle quitarProducto"  style="color: #ff8080;margin-top:4px;"></i>
                                 </div>                     
                             </td>
                         </tr>

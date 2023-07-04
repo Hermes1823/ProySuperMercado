@@ -10,7 +10,7 @@ const dataTable = new DataTable(showTable, {
         name: 'photo',
         title: 'IMAGEN',
         render: function(data, type, row) {
-          return '<img src="images/' + data + '" alt="Imagen" width="50" height="50">';
+          return '<img src="imagenes/products/' + data + '" alt="Imagen" width="50" height="50">';
         }
       }
     ],

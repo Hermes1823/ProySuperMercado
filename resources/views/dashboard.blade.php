@@ -37,6 +37,8 @@
         <link rel="stylesheet" href="/assets/css/demo.css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
   
+
+        
         @yield('css')
         @livewireStyles
     </head>
@@ -500,6 +502,7 @@
     });
 
 </script>
+<script src="https://kit.fontawesome.com/f9bb7aa434.js" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @yield('js')

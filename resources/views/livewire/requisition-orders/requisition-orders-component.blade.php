@@ -20,7 +20,7 @@
                 <div class="card-header d-flex align-items-center">
                     <input wire:model="search" style="height: 40px"  class="form-control" placeholder="Ingrese el id,colaborador,estado o fecha para buscar">
                     
-                    <a href="{{route('requisitionOrders.create')}}" class="btn btn-success ms-4 mb-0">
+                    <a href="{{route('requisitionOrders.create')}}" class="btn btn-success ml-4 mb-0">
                         <i class="fas fa-file-alt"></i> Nueva orden de requisición
                     </a>
                 </div>
@@ -45,7 +45,7 @@
                                 <td>
                                     <div class="d-flex" >
                                         <button type="button" id="btnModalVer" class="btn btn-primary" ><i class="far fa-eye"></i>  Ver</button>
-                                        <button type="button" class="btn btn-dark ms-4"><i class="fas fa-file-alt"></i> Generar solicitud de cotización</button>
+                                        <button type="button" class="btn btn-dark ml-4"><i class="fas fa-file-alt"></i> Generar solicitud de cotización</button>
                                     </div>
                                     
                                 </td>
@@ -73,7 +73,7 @@
 
     <!-- Modal -->
 <div wire:ignore class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Detalle de la requisición</h5>
@@ -88,12 +88,7 @@
                         <table class="table" id="showTable">
                             <thead>
                                 <tr>
-                                    {{-- <th scope="col">#</th>
-                                    <th scope="col">Producto</th>
-                                    <th scope="col">Marca</th>
-                                    <th scope="col">Categoría</th>
-                                    <th scope="col">Cantidad Requerida</th>
-                                    <th scope="col">Imagen</th> --}}
+                                   
                                 </tr>
                                 </thead>
                                 <tbody>

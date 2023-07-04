@@ -21,7 +21,7 @@
                 <input wire:model="search" class="form-control" style="padding:3px; height:40px;" placeholder="Buscar por categoría,marca o nombre">
                 <!-- Botón para abrir la ventana modal -->
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary ms-4" style="margin-bottom: 0" id="btnNewProduct" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-primary ml-4" style="margin-bottom: 0" id="btnNewProduct" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Registrar Producto
                 </button>
             </div>

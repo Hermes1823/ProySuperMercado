@@ -1,0 +1,10 @@
+.agregarProducto,
+.quitarProducto{
+    font-size: 20px;
+    transition: transform .2s ease-in-out ;
+}
+
+.agregarProducto:hover,
+.quitarProducto:hover{ 
+    transform: scale(1.3);
+}
