@@ -7,9 +7,11 @@ use App\Models\RequisitionOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RequisitionOrderDetail;
+use App\Models\SolicitudCotizacion;
 use Illuminate\Database\QueryException;
-
-
+use Dompdf\Dompdf;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use PDF;
 
 class RequisitionOrdersController extends Controller
 {
@@ -60,6 +62,49 @@ class RequisitionOrdersController extends Controller
         
     }
 
+    public function generarSolicitudCotizacion(Request $request){
+        $solicitudCotizacion= new SolicitudCotizacion();
+        $solicitudCotizacion->idOrdenRequisicion=$request->input('idOrdenRequisicion');
+        $solicitudCotizacion->idProveedor=$request->input('idProveedor');
+        //$solicitudCotizacion->save();
+
+        return json_encode(['mensaje' => "registrado"]);
+    }
+
+    public function solicitudCotizacionPDF(){
+        $a='hola';
+
+        try {
+            $ultimaSolicitud = SolicitudCotizacion::latest('id')->first();
+            
+        } catch (ModelNotFoundException $e) {
+            // Manejo de la excepción si no se encuentra ningún registro
+            // Por ejemplo, retornar null o un mensaje de error
+            return null;
+        }
+
+       // $view = view('pdf-layouts.solicitud-cotizacion', compact('ultimaSolicitud'));
+
+        // Carga la vista 'nombre_de_la_vista' y pasa los datos
+        $pdf = PDF::loadView('pdf-layouts.solicitud-cotizacion', compact('ultimaSolicitud'));
+
+        // Devuelve el PDF directamente en el navegador para visualización
+        return $pdf->stream('nombre_del_archivo.pdf');
+
+
+
+            // $dompdf = new Dompdf();
+            // $dompdf->loadHtml($view->render());
+            // $dompdf->setPaper('A4', 'portrait');
+            // $dompdf->render();
+            // // Establece el tipo de contenido en la respuesta para que el navegador reconozca el PDF
+            // header('Content-Type: application/pdf');
+            // // Devuelve el PDF directamente en el navegador con el contenido del PDF como un archivo PDF
+            // $dompdf->stream("solicitud.pdf", ['Attachment' => false]);
+    }
+
+
+
     public function show(Request $request){
              $idOrden=$request->input('id');
         
@@ -96,5 +141,8 @@ class RequisitionOrdersController extends Controller
 
 
     }
+
+
+    
 
 }

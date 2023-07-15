@@ -56,6 +56,8 @@ Route::get('requisitionOrders',[RequisitionOrdersController::class,'index'])->na
 Route::get('requisitionOrders/create',[RequisitionOrdersController::class,'create'])->name('requisitionOrders.create');
 Route::post('requisitionOrders/create',[RequisitionOrdersController::class,'register'])->name('requisitionOrders.register');
 Route::post('requisitionOrders/show',[RequisitionOrdersController::class,'show'])->name('requisitionOrders.show');
+Route::post('requisitionOrders/solicitudCotizacion',[RequisitionOrdersController::class,'generarSolicitudCotizacion'])->name('requisitionOrders.solicitudCotizacion');
+Route::get('requisitionOrders/visualizarCotizacionPDF',[RequisitionOrdersController::class,'solicitudCotizacionPDF'])->name('solicitudCotizacionPDF');
 
 
 //Almacen

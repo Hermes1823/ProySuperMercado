@@ -221,11 +221,16 @@
                                                 <span class="sub-item">Órdenes de Requisición</span>
                                             </a>
                                         </li>
-                                       
+                                        <li>
+                                            <a href="">
+                                                <span class="sub-item">Solicitudes de cotización</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
+                                
                             </li>
-
+                            
                             <li class="nav-item">
                                 <a data-toggle="collapse" href="#marketing">
                                     <i class="fas fa-shopping-basket" style="color: #ffffff;"></i>

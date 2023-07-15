@@ -37,7 +37,7 @@
                     </thead>
                     <tbody>
                         @foreach ($requisitionOrders as $requisitionOrder)
-                            <tr id={{$requisitionOrder->id}}>
+                            <tr id={{$requisitionOrder->id}} >
                                 <td>{{$requisitionOrder->id}}</td> </td>
                                 <td>{{$requisitionOrder->nombreCompleto}}</td>
                                 <td>{{$requisitionOrder->estado}}</td>
@@ -48,7 +48,7 @@
                                             <i class="far fa-eye" id="iconModalVer"></i>  Ver
                                         </button>
                                         <button type="button" id="btnSolicitudCotizacion" class="btn btn-dark ml-4">
-                                            <i class="fas fa-file-alt"></i> Generar solicitud de cotización
+                                            <i class="fas fa-file-alt" id="iconSolicitudCotizacion"></i> Generar solicitud de cotización
                                         </button>
 
                                     </div>
@@ -81,7 +81,11 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Detalle de la requisición</h5>
+            <div>
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <h5 id="modalLabelSub"></h5>
+            </div>
+         
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -103,9 +107,7 @@
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
-          <button type="button" class="btn btn-primary">Editar</button>
-          <button type="button" class="btn btn-danger">Eliminar</button>
+         
         </div>
       </div>
     </div>

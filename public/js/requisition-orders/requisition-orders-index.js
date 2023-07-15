@@ -9,32 +9,105 @@ events();
 })
 
 function events(){
-
+    var idRow="";
     document.addEventListener('click',(e)=>{
         const idTarget= e.target.id;
-       
+        
 
-        if(idTarget==="btnModalVer" || idTarget==="iconModalVer"){
-            const row=e.target.parentElement.parentElement.parentElement;
-            const object={id:row.id};
+        if(idTarget==="btnModalVer"){
+            idRow=e.target.parentElement.parentElement.parentElement.id;
+           
+            const object={id:idRow};
             
-            showRequisitionOrders(object);
+            showRequisitionOrders(object,idRow);  
+        }else if(idTarget==="iconModalVer"){
+            idRow=e.target.parentElement.parentElement.parentElement.parentElement.id;
+           
+            const object={id:idRow};
             
+            showRequisitionOrders(object,idRow);  
         }
 
-        if(idTarget==="btnSolicitudCotizacion"){
+        if(idTarget==="btnSolicitudCotizacion" || idTarget==="iconSolicitudCotizacion"){
+          if(idTarget==="btnSolicitudCotizacion"){
+            idRow=e.target.parentElement.parentElement.parentElement.id;
+          }else if(idTarget==="iconSolicitudCotizacion"){
+            idRow=e.target.parentElement.parentElement.parentElement.parentElement.id;
+          }
           pintarSelectProveedores();
-          openModal('Generar solicitud de cotización');
+          openModal('Generar solicitud de cotización',idRow);
+        }
+
+        if(idTarget==="btnRegSolicitudCotizacion"){
+          e.preventDefault();
+          const proveedorSeleccionado= document.querySelector('#selectProveedores').value;
+          if(proveedorSeleccionado!=="Seleccionar proveedor"){
+            const solicitudCotizacion={
+              idProveedor:proveedorSeleccionado,
+              idOrdenRequisicion:idRow,
+            }
+            registerSolicitudCotizacion(solicitudCotizacion);
+          }else{
+            alerta3('error','Error','Debe seleccionar un proveedor')
+          }
+          
         }
 
     })
 }
 
-const getProveedores = () =>{
+const alerta3=(tipo,titulo,descripcion)=>{
+  Swal.fire({
+    icon: tipo,
+    title: titulo,
+    text: descripcion
+  })
+}
+
+const registerSolicitudCotizacion = (data) => {
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+  fetch('requisitionOrders/solicitudCotizacion', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRF-TOKEN': csrfToken
+    },
+    body: JSON.stringify(data)
+  })
+  .then(r => r.json())
+  .then(respuesta =>{
+     
+     console.log(respuesta)
+     alertaConfirmacion('Solicitud de cotización generada','success','¿Desea visualizar la solicitud?');
+  })
+}
+
+const alertaConfirmacion=(titulo,tipo,pregunta)=>{
+  Swal.fire({
+    icon: tipo,
+    title: titulo,
+    
+     
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: pregunta,
+    denyButtonText: `Salir`
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      window.location = "requisitionOrders/visualizarCotizacionPDF";
+    } else if (result.isDenied) {
+     
+      //regresar a la pagina anterior
+      
+    }
+  })
   
 }
 
-const showRequisitionOrders = (data) => {
+
+const showRequisitionOrders = (data,idRow) => {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
   
     fetch('requisitionOrders/show', {
@@ -51,7 +124,7 @@ const showRequisitionOrders = (data) => {
        //console.log(respuesta.detail);
         pintarTablaShow();
         loadTableShow(respuesta.detail);
-        openModal('Detalle de la orden de requisición');
+        openModal('Detalle de la orden de requisición',idRow);
     })
 }
 
@@ -69,15 +142,30 @@ const pintarTablaShow=()=>{
       
       </tbody>
   </table>`;
+
+  const modalFooter = document.querySelector('.modal-footer');
+  modalFooter.innerHTML=` 
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+  <button type="button" class="btn btn-primary">Editar</button>
+  <button type="button" class="btn btn-danger">Eliminar</button>`;
+
 }
 const pintarSelectProveedores=()=>{
-  contenidoModal.innerHTML=`
-  <select class="custom-select" size="3">
-  <option selected>Seleccione un proveedor</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
+  
+    contenidoModal.innerHTML=`
+      <select class="custom-select" id="selectProveedores" size="3">
+        <option selected>Seleccionar proveedor</option>
+      </select>`;
+    const selectProveedores= document.querySelector('#selectProveedores');
+  proveedores.forEach((p)=>{
+    selectProveedores.innerHTML+=`
+        <option value="${p.id}">${p.nombre}</option>
+    `;
+  })
+  const modalFooter = document.querySelector('.modal-footer');
+  modalFooter.innerHTML=`
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Salir</button>
+  <button type="button" class="btn btn-primary" id="btnRegSolicitudCotizacion">Registrar</button>
   `;
 }
 
@@ -140,12 +228,14 @@ const loadTableShow= (datos)=>{
     
 }
 
-const openModal = (titulo)=>{
+const openModal = (titulo,subtitulo)=>{
     const exampleModalLabel= document.querySelector('#exampleModalLabel');
+    const subLabel= document.querySelector('#modalLabelSub');
     const myModal = new bootstrap.Modal(document.getElementById('exampleModal'), {
         keyboard: false
       })
     exampleModalLabel.textContent=titulo; 
+    subLabel.textContent=`Id Requisición: ${subtitulo}`;
     
       myModal.show();
 }

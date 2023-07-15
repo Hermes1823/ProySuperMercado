@@ -15,16 +15,16 @@ class ProveedorSeeder extends Seeder
     {
         //
         Proveedor::create([
-            'ruc' => 'The Coca-Cola Company',
-            'nombre' => '20415932376',
+            'nombre' => 'The Coca-Cola Company',
+            'ruc' => '20415932376',
         ]);
         Proveedor::create([
-            'ruc' => 'Nesté',
-            'nombre' => '20263322496',
+            'nombre' => 'Nesté',
+            'ruc' => '20263322496',
         ]);
         Proveedor::create([
-            'ruc' => 'Clorox',
-            'nombre' => '20264846855',
+            'nombre' => 'Clorox',
+            'ruc' => '20264846855',
         ]);
     }
 }
