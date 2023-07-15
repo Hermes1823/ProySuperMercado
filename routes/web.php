@@ -7,6 +7,7 @@ use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\MontacargaController;
 use App\Http\Controllers\AlmaceneroController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\CuponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequisitionOrdersController;
 
@@ -83,3 +84,11 @@ Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('client
 Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('cliente.destroy');
 
 Route::get('/clientes/{id}/confirmar', [ClienteController::class, 'confirmar'])->name('cliente.confirmar');
+
+//cupones
+
+Route::get('/cupones', [CuponController::class, 'index'])->name('cupon.index');
+Route::get('/cupones/create', [CuponController::class, 'create'])->name('cupon.create');
+Route::get('/cupones', [CuponController::class, 'store'])->name('cupon.store');
+
+
