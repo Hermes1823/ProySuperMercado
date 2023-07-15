@@ -5,6 +5,7 @@ namespace App\Http\Livewire\RequisitionOrders;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\RequisitionOrder;
+use App\Models\Proveedor;
 
 class RequisitionOrdersComponent extends Component
 {
@@ -31,6 +32,8 @@ class RequisitionOrdersComponent extends Component
         ->orderBy('ordenes_requisicion.id')
         ->paginate(8);
 
-        return view('livewire.requisition-orders.requisition-orders-component',compact('requisitionOrders'));
+        $proveedores= Proveedor::all();
+
+        return view('livewire.requisition-orders.requisition-orders-component',compact('requisitionOrders','proveedores'));
     }
 }

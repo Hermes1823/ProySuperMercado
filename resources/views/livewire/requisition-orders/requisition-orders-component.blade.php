@@ -1,6 +1,6 @@
 <div>
 
-
+    
     <div class="col-lg-12 mb-lg-0 mb-4">
 
           
@@ -44,8 +44,13 @@
                                 <td>{{$requisitionOrder->created_at}}</td>
                                 <td>
                                     <div class="d-flex" >
-                                        <button type="button" id="btnModalVer" class="btn btn-primary" ><i class="far fa-eye"></i>  Ver</button>
-                                        <button type="button" class="btn btn-dark ml-4"><i class="fas fa-file-alt"></i> Generar solicitud de cotización</button>
+                                        <button type="button" id="btnModalVer" class="btn btn-primary" >
+                                            <i class="far fa-eye" id="iconModalVer"></i>  Ver
+                                        </button>
+                                        <button type="button" id="btnSolicitudCotizacion" class="btn btn-dark ml-4">
+                                            <i class="fas fa-file-alt"></i> Generar solicitud de cotización
+                                        </button>
+
                                     </div>
                                     
                                 </td>
@@ -83,21 +88,9 @@
           
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col">
+                    <div class="col" id="contenidoModal">
 
-                        <table class="table" id="showTable">
-                            <thead>
-                                <tr>
-                                   
-                                </tr>
-                                </thead>
-                                <tbody>
-                                
-    
-    
-    
-                                </tbody>
-                        </table>
+                        
 
                     </div>
                 </div>
@@ -118,5 +111,10 @@
     </div>
   </div>
   {{-- fin modal --}}
+
+
+  <script>
+    var proveedores = @json($proveedores);
+  </script>
 
 </div>

@@ -25,7 +25,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ColaboradorSeeder::class);
         $this->call(RequisitionOrdersSeeder::class);
         $this->call(RequisitionOrdersDetailSeeder::class);
-
+        $this->call(ProveedorSeeder::class);
+        $this->call(SolicitudCotizacionSeeder::class);
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
