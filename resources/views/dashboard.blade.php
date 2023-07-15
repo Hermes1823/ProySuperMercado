@@ -225,6 +225,31 @@
                                     </ul>
                                 </div>
                             </li>
+
+                            <li class="nav-item">
+                                <a data-toggle="collapse" href="#marketing">
+                                    <i class="fas fa-shopping-basket" style="color: #ffffff;"></i>
+                                    <p>Subsistema Marketing</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="marketing">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="#">
+                                                <span class="sub-item">Cupones</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('cliente.index')}}">
+                                                <span class="sub-item">Clientes</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            
+
                             <li class="nav-item">
                                 <a data-toggle="collapse" href="#config">
                                     <i class="fas fa-cog"></i>

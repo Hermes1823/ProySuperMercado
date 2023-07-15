@@ -6,6 +6,7 @@ use App\Http\Controllers\Usuario1Controller;
 use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\MontacargaController;
 use App\Http\Controllers\AlmaceneroController;
+use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequisitionOrdersController;
 
@@ -70,3 +71,13 @@ Route::get('confirmarM{id}/',[MontacargaController::class,'confirmar'])->name('M
 Route::resource('Almacenero',AlmaceneroController::class);
 Route::get('Almacenerocancelar',[AlmaceneroController::class,'cancelar'])->name('Almacenero.cancelar');
 Route::get('confirmarAlma{id}/',[AlmaceneroController::class,'confirmar'])->name('Almacenero.confirmar');
+
+//Cliente
+Route::get('/clientes', [ClienteController::class, 'index'])->name('cliente.index');
+Route::get('/clientes/create', [ClienteController::class, 'create'])->name('cliente.create');
+Route::post('/clientes', [ClienteController::class, 'store'])->name('cliente.store');
+Route::get('/clientes/{id}/edit', [ClienteController::class, 'edit'])->name('cliente.edit');
+Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('cliente.update');
+Route::delete('/clientes/{id}', [ClienteController::class, 'destroy'])->name('cliente.destroy');
+
+Route::get('/clientes/{id}/confirmar', [ClienteController::class, 'confirmar'])->name('cliente.confirmar');
