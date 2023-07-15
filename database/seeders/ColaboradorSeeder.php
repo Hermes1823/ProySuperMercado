@@ -28,6 +28,18 @@ class ColaboradorSeeder extends Seeder
             'descripcion' => 'Proactiva y responsable',
         ]);
 
+        Colaborador::create([
+            'idColaborador' => 3,
+            'prenombres' => 'HERMES',
+            'apellidos' => 'CASTILLO SARMIENTO',
+            'direccion' => 'Av. Las Palmeras 121',
+            'ciudad' => 'Trujillo',
+            'pais' => 'Perú',
+            'codigoPostal' => '13001',
+            'fechaNacimiento' => '12-10-2000',
+            'descripcion' => 'Proactiva y responsable',
+        ]);
+
      
 
     }

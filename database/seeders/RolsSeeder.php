@@ -22,6 +22,11 @@ class RolsSeeder extends Seeder
          Rols::create([
                         'rolnombre' => 'Administrador'
                      ]);
+        
+        Rols::create([
+                        'rolnombre' => 'Cliente',
+                     ]);
+        
 
     }
     //todos

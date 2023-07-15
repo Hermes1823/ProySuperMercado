@@ -54,9 +54,9 @@ class RequisitionOrdersController extends Controller
             }
 
         }
-        
         // Retornar una respuesta en formato JSON u otro tipo de respuesta
-        return json_encode(['mensaje' => $error]);
+        return json_encode(['mensaje' => $array]);
+
         
     }
 

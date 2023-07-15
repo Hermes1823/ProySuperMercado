@@ -162,6 +162,7 @@
                                 </span>
                                 <h4 class="text-section">MENÚ PRINCIPAL</h4>
                             </li>
+                            @if (Auth::user()->idrol != 3)
                             <li class="nav-item">
                                 <a data-toggle="collapse" href="#productos">
                                     <i class="fas fa-layer-group"></i>
@@ -171,13 +172,14 @@
                                 <div class="collapse" id="productos">
                                     <ul class="nav nav-collapse">
                                         <li>
-                                            <a href="{{route('product.index')}}">
+                                            <a href="{{ route('product.index') }}">
                                                 <span class="sub-item">Productos</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
+                        @endif
                             <li class="nav-item">
                                 <a data-toggle="collapse" href="#base">
                                     <i class="fas fa-layer-group"></i>
