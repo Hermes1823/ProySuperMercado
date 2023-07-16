@@ -60,9 +60,9 @@
                                 <td>{{$item->id_cliente}}</td>
                                 <td>{{ $item->nombre }}</td>
                                 <td>{{ $item->apellido }}</td>
-                                <td>{{ $item->direccion }}</td>
-                                <td>{{ $item->telefono }}</td>
-                                <td>{{ $item->email }}</td>
+                                <td>{{ $item->direccion_domicilio}}</td>
+                                <td>{{ $item->telefono}}</td>
+                                <td>{{ $item->correo_electronico}}</td>
                                 <td>
                                     <a href="{{ route('cliente.edit',$item->id_cliente) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
 

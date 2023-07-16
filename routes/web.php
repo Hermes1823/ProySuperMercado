@@ -89,6 +89,11 @@ Route::get('/clientes/{id}/confirmar', [ClienteController::class, 'confirmar'])-
 
 Route::get('/cupones/index', [CuponController::class, 'index'])->name('cupon.index');
 Route::get('/cupones/create', [CuponController::class, 'create'])->name('cupon.create');
-Route::get('/cupones', [CuponController::class, 'store'])->name('cupon.store');
+Route::post('/cupones', [CuponController::class, 'store'])->name('cupon.store');
+Route::get('/cupones/{id}/edit', [CuponController::class, 'edit'])->name('cupon.edit');
+Route::put('/cupones/{id}', [CuponController::class, 'update'])->name('cupon.update');
+
+Route::delete('/cupones/{id}', [CuponController::class, 'destroy'])->name('cupon.destroy');
 
 
+Route::get('/cupones/{id}/confirmar', [CuponController::class, 'confirmar'])->name('cupon.confirmar');
