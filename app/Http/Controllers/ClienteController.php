@@ -126,7 +126,7 @@ class ClienteController extends Controller
 
     public function confirmar($id)
     {
-    if (Auth::user()->rol == 'Administrativo') {
+    if (Auth::user()->rol == 'Administrador') {
         $cliente = Cliente::findOrFail($id);
         return view('cliente.confirmar', compact('cliente'));
     } else {

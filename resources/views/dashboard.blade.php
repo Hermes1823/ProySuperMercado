@@ -234,14 +234,16 @@
                                 </a>
                                 <div class="collapse" id="marketing">
                                     <ul class="nav nav-collapse">
-                                        <li>
-                                            <a href="#">
-                                                <span class="sub-item">Cupones</span>
-                                            </a>
-                                        </li>
+                                       
                                         <li>
                                             <a href="{{route('cliente.index')}}">
                                                 <span class="sub-item">Clientes</span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{route('cupon.index')}}">
+                                                <span class="sub-item">Cupones</span>
                                             </a>
                                         </li>
                                     </ul>
