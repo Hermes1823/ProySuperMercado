@@ -12,7 +12,7 @@ use Illuminate\Database\QueryException;
 use Dompdf\Dompdf;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use PDF;
-
+use Carbon\Carbon;
 class RequisitionOrdersController extends Controller
 {
     //
@@ -66,16 +66,27 @@ class RequisitionOrdersController extends Controller
         $solicitudCotizacion= new SolicitudCotizacion();
         $solicitudCotizacion->idOrdenRequisicion=$request->input('idOrdenRequisicion');
         $solicitudCotizacion->idProveedor=$request->input('idProveedor');
-        //$solicitudCotizacion->save();
+        $solicitudCotizacion->save();
 
         return json_encode(['mensaje' => "registrado"]);
     }
 
-    public function solicitudCotizacionPDF(){
-        $a='hola';
+    public function solicitudCotizacionPDF($id){
+     
+        $fechaActual = Carbon::now()->format('d-m-Y');
 
         try {
-            $ultimaSolicitud = SolicitudCotizacion::latest('id')->first();
+            $ultimaRequisicion = RequisitionOrder::latest('id')->first();
+            $header = SolicitudCotizacion::join('proveedores as pro', 'pro.id', '=', 'solicitudes_cotizacion.idProveedor')
+            ->select('pro.nombre as nombreProveedor', 'pro.ruc as rucProveedor')
+            ->where('solicitudes_cotizacion.id', $ultimaRequisicion->id)
+            ->get();
+            $productos=SolicitudCotizacion::join('ordenes_requisicion as or', 'or.id', '=', 'solicitudes_cotizacion.idOrdenRequisicion')
+            ->join('ordenes_requisicion_detalle as ord','ord.idOrdenRequisicion','=','or.id')
+            ->join('productos as p','p.id','=','ord.idProducto')
+            ->select('p.nombre as nombreProducto','ord.cantidad')
+            ->where('or.id', $id)
+            ->get();
             
         } catch (ModelNotFoundException $e) {
             // Manejo de la excepción si no se encuentra ningún registro
@@ -83,24 +94,13 @@ class RequisitionOrdersController extends Controller
             return null;
         }
 
-       // $view = view('pdf-layouts.solicitud-cotizacion', compact('ultimaSolicitud'));
+            $view = view('pdf-layouts.solicitud-cotizacion', compact('header','fechaActual','productos'));
 
-        // Carga la vista 'nombre_de_la_vista' y pasa los datos
-        $pdf = PDF::loadView('pdf-layouts.solicitud-cotizacion', compact('ultimaSolicitud'));
-
-        // Devuelve el PDF directamente en el navegador para visualización
-        return $pdf->stream('nombre_del_archivo.pdf');
-
-
-
-            // $dompdf = new Dompdf();
-            // $dompdf->loadHtml($view->render());
-            // $dompdf->setPaper('A4', 'portrait');
-            // $dompdf->render();
-            // // Establece el tipo de contenido en la respuesta para que el navegador reconozca el PDF
-            // header('Content-Type: application/pdf');
-            // // Devuelve el PDF directamente en el navegador con el contenido del PDF como un archivo PDF
-            // $dompdf->stream("solicitud.pdf", ['Attachment' => false]);
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($view->render());
+            $dompdf->setPaper('A4', 'portrait');
+            $dompdf->render();
+            $dompdf->stream("solicitud.pdf", ['Attachment' => false]);
     }
 
 

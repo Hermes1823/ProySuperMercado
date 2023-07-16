@@ -46,7 +46,7 @@ function events(){
               idProveedor:proveedorSeleccionado,
               idOrdenRequisicion:idRow,
             }
-            registerSolicitudCotizacion(solicitudCotizacion);
+            registerSolicitudCotizacion(solicitudCotizacion,idRow);
           }else{
             alerta3('error','Error','Debe seleccionar un proveedor')
           }
@@ -64,7 +64,7 @@ const alerta3=(tipo,titulo,descripcion)=>{
   })
 }
 
-const registerSolicitudCotizacion = (data) => {
+const registerSolicitudCotizacion = (data,idRequisicion) => {
   const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
   fetch('requisitionOrders/solicitudCotizacion', {
@@ -79,11 +79,11 @@ const registerSolicitudCotizacion = (data) => {
   .then(respuesta =>{
      
      console.log(respuesta)
-     alertaConfirmacion('Solicitud de cotización generada','success','¿Desea visualizar la solicitud?');
+     alertaConfirmacion('Solicitud de cotización generada','success','¿Desea visualizar la solicitud?',idRequisicion);
   })
 }
 
-const alertaConfirmacion=(titulo,tipo,pregunta)=>{
+const alertaConfirmacion=(titulo,tipo,pregunta,idRequisicion)=>{
   Swal.fire({
     icon: tipo,
     title: titulo,
@@ -96,7 +96,7 @@ const alertaConfirmacion=(titulo,tipo,pregunta)=>{
   }).then((result) => {
     /* Read more about isConfirmed, isDenied below */
     if (result.isConfirmed) {
-      window.location = "requisitionOrders/visualizarCotizacionPDF";
+      window.location = `requisitionOrders/visualizarCotizacionPDF/${idRequisicion}`;
     } else if (result.isDenied) {
      
       //regresar a la pagina anterior

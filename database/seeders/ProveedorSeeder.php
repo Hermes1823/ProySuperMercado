@@ -19,7 +19,7 @@ class ProveedorSeeder extends Seeder
             'ruc' => '20415932376',
         ]);
         Proveedor::create([
-            'nombre' => 'Nesté',
+            'nombre' => 'Nestlé',
             'ruc' => '20263322496',
         ]);
         Proveedor::create([
