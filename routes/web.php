@@ -87,7 +87,7 @@ Route::get('/clientes/{id}/confirmar', [ClienteController::class, 'confirmar'])-
 
 //cupones
 
-Route::get('/cupones', [CuponController::class, 'index'])->name('cupon.index');
+Route::get('/cupones/index', [CuponController::class, 'index'])->name('cupon.index');
 Route::get('/cupones/create', [CuponController::class, 'create'])->name('cupon.create');
 Route::get('/cupones', [CuponController::class, 'store'])->name('cupon.store');
 
