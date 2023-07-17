@@ -18,15 +18,17 @@ class UserSeeder extends Seeder
         User::create([
             'name' => "Estrella Cruz Ulloa",
             'email' => "cuae@gmail.com",
+            'idRol' => 2,
             'password' => Hash::make('123456789'),
-            'idrol' => 2,
+            
         ]);
 
         User::create([
             'name' => "Castillo Sarmiento Jose Maria Hermes",
             'email' => "hermescallao47@gmail.com",
+            'idRol' => 2,
             'password' => Hash::make('HERMES'),
-            'idrol' => 2,
+           
         ]);
     }
 }
