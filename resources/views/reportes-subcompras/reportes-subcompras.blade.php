@@ -34,40 +34,51 @@
 <script>
    
   
-    Highcharts.chart('container', {
+   Highcharts.chart('container', {
     chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false,
-        type: 'pie'
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45,
+            beta: 0
+        }
     },
     title: {
-        text: " Solicitudes de cotización",
+        text: 'Solicitudes de cotización',
         align: 'left'
     },
-    tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    subtitle: {
+        text: 'Detallado por Cruz Ulloa Estrella',
+        align: 'left'
     },
     accessibility: {
         point: {
             valueSuffix: '%'
         }
     },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
     plotOptions: {
         pie: {
             allowPointSelect: true,
             cursor: 'pointer',
+            depth: 35,
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                format: '{point.name}'
             }
         }
     },
     series: [{
-        name: 'cantidad',
-        data: <?= $data ?>
-    }] 
+        type: 'pie',
+        name: 'Share',
+        data: 
+          <?= $data?>
+        
+    }]
 });
+
     
 
 
@@ -101,7 +112,7 @@ const chart = new Highcharts.Chart({
         align: 'left'
     },
     subtitle: {
-        text: 'Reporte detallado',
+        text: 'Detallado por Cruz Ulloa Estrella',
         align: 'left'
     },
     legend: {
