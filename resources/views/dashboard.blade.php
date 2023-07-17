@@ -256,14 +256,20 @@
 
                                         <li>
                                             <a href="{{route('pregunta.index')}}">
-                                                <span class="sub-item">Preguntas</span>
+                                                <span class="sub-item">Preguntas de encuesta</span>
                                             </a>
                                         </li>
 
 
                                         <li>
-                                            <a href="#">
+                                            <a href="{{route('encuesta.index')}}">
                                                 <span class="sub-item">Encuestas de satisfaccion</span>
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">
+                                                <span class="sub-item">Respuestas de encuesta</span>
                                             </a>
                                         </li>
 

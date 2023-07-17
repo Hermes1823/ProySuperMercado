@@ -11,6 +11,7 @@ use App\Http\Controllers\CuponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequisitionOrdersController;
 use App\Http\Controllers\PreguntaController;
+use App\Http\Controllers\EncuestaController;
 use App\Models\Pregunta;
 
 Route::get('/', function () {
@@ -108,4 +109,10 @@ Route::post('/preguntas', [PreguntaController::class, 'store'])->name('pregunta.
 Route::get('/preguntas/{id}/edit', [PreguntaController::class, 'edit'])->name('pregunta.edit');
 Route::put('/preguntas/{id}', [PreguntaController::class, 'update'])->name('pregunta.update');
 Route::delete('/preguntas/{id}', [PreguntaController::class, 'destroy'])->name('pregunta.destroy');
-Route::get('/pregunta/{id}/confirmar', [PreguntaController::class, 'confirmar'])->name('pregunta.confirmar');
+Route::get('/pregunta/{id}/confirmar', [PreguntaController::class, 'confirmar'])->name('pregunta.confirmar'); 
+
+//encuesta 
+
+Route::get('/encuestas', [EncuestaController::class, 'index'])->name('encuesta.index');
+Route::get('/encuestas/create', [EncuestaController::class, 'create'])->name('encuesta.create');
+Route::post('/encuestas', [EncuestaController::class, 'store'])->name('encuesta.store');
