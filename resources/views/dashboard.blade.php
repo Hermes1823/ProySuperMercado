@@ -199,6 +199,8 @@
                                                 <span class="sub-item">Montacargas</span>
                                             </a>
                                         </li>
+
+                                    
                                         <li>
                                             <a href="{{route('Almacenero.index')}}">
                                                 <span class="sub-item">Detalle Almacen</span>
@@ -251,6 +253,20 @@
                                                 <span class="sub-item">Cupones</span>
                                             </a>
                                         </li>
+
+                                        <li>
+                                            <a href="{{route('pregunta.index')}}">
+                                                <span class="sub-item">Preguntas</span>
+                                            </a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="#">
+                                                <span class="sub-item">Encuestas de satisfaccion</span>
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </li>

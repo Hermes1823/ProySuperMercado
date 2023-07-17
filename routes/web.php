@@ -10,6 +10,8 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CuponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequisitionOrdersController;
+use App\Http\Controllers\PreguntaController;
+use App\Models\Pregunta;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -97,3 +99,13 @@ Route::delete('/cupones/{id}', [CuponController::class, 'destroy'])->name('cupon
 
 
 Route::get('/cupones/{id}/confirmar', [CuponController::class, 'confirmar'])->name('cupon.confirmar');
+
+//pregunta
+
+Route::get('preguntas',[PreguntaController::class, 'index'])->name('pregunta.index');
+Route::get('/preguntas/create', [PreguntaController::class, 'create'])->name('pregunta.create');
+Route::post('/preguntas', [PreguntaController::class, 'store'])->name('pregunta.store');
+Route::get('/preguntas/{id}/edit', [PreguntaController::class, 'edit'])->name('pregunta.edit');
+Route::put('/preguntas/{id}', [PreguntaController::class, 'update'])->name('pregunta.update');
+Route::delete('/preguntas/{id}', [PreguntaController::class, 'destroy'])->name('pregunta.destroy');
+Route::get('/pregunta/{id}/confirmar', [PreguntaController::class, 'confirmar'])->name('pregunta.confirmar');
