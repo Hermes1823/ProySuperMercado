@@ -38,7 +38,10 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
 
-
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
         @yield('css')
         @livewireStyles
     </head>
@@ -224,7 +227,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="">
+                                            <a href="{{route('solicitud-cotizacion.index')}}">
                                                 <span class="sub-item">Solicitudes de cotización</span>
                                             </a>
                                         </li>
@@ -350,8 +353,13 @@
                                                 <span class="sub-item">Informe del almacén</span>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a href="{{route('reporte-subcompras')}}">
+                                                <span class="sub-item">Módulo de compras</span>
+                                            </a>
+                                        </li>
                                     </ul>
-                                </div>
+                                </div>   
                             </li>
                             <li class="nav-item">
                                 <a data-toggle="collapse" href="#sidebarLayouts">
@@ -515,7 +523,7 @@
         </div>
             </div>
         <!--   Core JS Files   -->
-        <script src="/assets/js/core/jquery.3.2.1.min.js"></script>
+        <script src="/assets/js/core/jquery.3.2.1.min.js"></>
         <script src="/assets/js/core/popper.min.js"></script>
         <script src="/assets/js/core/bootstrap.min.js"></script>
 

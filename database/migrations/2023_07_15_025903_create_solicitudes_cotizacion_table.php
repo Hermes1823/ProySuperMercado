@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('idOrdenRequisicion');
             $table->unsignedBigInteger('idProveedor');
+            $table->string('estado')->default('pendiente');;
             $table->timestamps();
             $table->foreign('idOrdenRequisicion')->references('id')->on('ordenes_requisicion');
             $table->foreign('idProveedor')->references('id')->on('proveedores');

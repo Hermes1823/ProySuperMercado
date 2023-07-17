@@ -73,7 +73,7 @@ class RequisitionOrdersController extends Controller
 
     public function solicitudCotizacionPDF($id){
      
-        $fechaActual = Carbon::now()->format('d-m-Y');
+        $fechaSolicitud = Carbon::now()->format('d-m-Y');
 
         try {
             $ultimaCotizacion = SolicitudCotizacion::latest('id')->first();
@@ -94,7 +94,7 @@ class RequisitionOrdersController extends Controller
             return null;
         }
 
-            $view = view('pdf-layouts.solicitud-cotizacion', compact('header','fechaActual','productos'));
+            $view = view('pdf-layouts.solicitud-cotizacion', compact('header','fechaSolicitud','productos'));
 
             $dompdf = new Dompdf();
             $dompdf->loadHtml($view->render());

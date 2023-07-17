@@ -52,7 +52,7 @@
                 <h4>RUC: 1475566984</h4>
                 <h4>Supermercado Estrella</h4>
                 <h5>Trujillo - La Libertad - Perú</h5>
-                <h5>{{$fechaActual}}</h5>
+                <h5>{{$fechaSolicitud}}</h5>
             </div>
         </div>
         <div class="header__img">

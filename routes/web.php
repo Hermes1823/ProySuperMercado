@@ -18,6 +18,8 @@ use App\Http\Controllers\PostulanteController;
 use App\Http\Controllers\ConvocatoriaController;
 
 use App\Http\Controllers\PromocionController;
+use App\Http\Controllers\ReporteSubComprasController;
+use App\Http\Controllers\SolicitudCotizacionController;
 use App\Models\Pregunta;
 
 Route::get('/', function () {
@@ -68,6 +70,14 @@ Route::post('requisitionOrders/create',[RequisitionOrdersController::class,'regi
 Route::post('requisitionOrders/show',[RequisitionOrdersController::class,'show'])->name('requisitionOrders.show');
 Route::post('requisitionOrders/solicitudCotizacion',[RequisitionOrdersController::class,'generarSolicitudCotizacion'])->name('requisitionOrders.solicitudCotizacion');
 Route::get('requisitionOrders/visualizarCotizacionPDF/{id}', [RequisitionOrdersController::class, 'solicitudCotizacionPDF'])->name('solicitudCotizacionPDF');
+
+//Solicitudes de cotización
+Route::get('solicitudesCotizacion',[SolicitudCotizacionController::class,'index'])->name('solicitud-cotizacion.index');
+Route::get('solicitudesCotizacion/pdf/{id}',[SolicitudCotizacionController::class,'pdf'])->name('solicitud-cotizacion.pdf');
+
+
+//reportes subcompras
+Route::get('reportesSubCompras',[ReporteSubComprasController::class,'reportes'])->name('reporte-subcompras');
 
 
 //Almacen
