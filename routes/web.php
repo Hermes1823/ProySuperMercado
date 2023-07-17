@@ -148,6 +148,13 @@ Route::get('postulante/confirmar/{id}',[PostulanteController::class,'confirmar']
 Route::resource('convocatoria',ConvocatoriaController::class);
 Route::get('convocatoria/cancelar',[ConvocatoriaController::class,'cancelar'])->name('convocatoria.cancelar');
 Route::get('convocatoria/confirmar/{id}',[ConvocatoriaController::class,'confirmar'])->name('convocatoria.confirmar');
+Route::get('convocatoria/asignar/{id}',[ConvocatoriaController::class,'asignar'])->name('convocatoria.asignar');
+Route::post('convocatoria/asignar/store',[ConvocatoriaController::class,'asignar_store'])->name('convocatoria.asignar_store');
+Route::get('convocatoria/asignar/delete',[ConvocatoriaController::class,'asignar_delete'])->name('convocatoria.asignar_delete');
+Route::get('convocatoria/calificar/{id}',[ConvocatoriaController::class,'calificar'])->name('convocatoria.calificar');
+Route::post('convocatoria/calificar/store',[ConvocatoriaController::class,'calificar_store'])->name('convocatoria.calificar_store');
+Route::get('convocatoria/calificar/delete',[ConvocatoriaController::class,'calificar_delete'])->name('convocatoria.calificar_delete');
+
 //promociones
 
 Route::get('/promociones', [PromocionController::class, 'index'])->name('promocion.index');

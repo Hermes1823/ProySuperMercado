@@ -8,7 +8,7 @@
                     <div class="card-header">Editar Postulante</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('cliente.update', $cliente->id_cliente) }}">
+                        <form method="POST" action="{{ route('convocatoria.update', $cliente->id_cliente) }}">
                             @csrf
                             @method('PUT')
 
