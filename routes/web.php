@@ -13,8 +13,11 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequisitionOrdersController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\EncuestaController;
+
 use App\Http\Controllers\PostulanteController;
 use App\Http\Controllers\ConvocatoriaController;
+
+use App\Http\Controllers\PromocionController;
 use App\Models\Pregunta;
 
 Route::get('/', function () {
@@ -135,3 +138,14 @@ Route::get('postulante/confirmar/{id}',[PostulanteController::class,'confirmar']
 Route::resource('convocatoria',ConvocatoriaController::class);
 Route::get('convocatoria/cancelar',[ConvocatoriaController::class,'cancelar'])->name('convocatoria.cancelar');
 Route::get('convocatoria/confirmar/{id}',[ConvocatoriaController::class,'confirmar'])->name('convocatoria.confirmar');
+//promociones
+
+Route::get('/promociones', [PromocionController::class, 'index'])->name('promocion.index');
+Route::get('/promociones/create', [PromocionController::class, 'create'])->name('promocion.create');
+Route::post('/promociones', [PromocionController::class, 'store'])->name('promocion.store');
+Route::get('/promociones/{promocion}/edit', [PromocionController::class, 'edit'])->name('promocion.edit');
+Route::put('/promociones/{promocion}', [PromocionController::class, 'update'])->name('promocion.update');
+Route::get('/promociones/{promocion}/confirmar', [PromocionController::class, 'confirmar'])->name('promocion.confirmar');
+Route::delete('/promociones/{promocion}', [PromocionController::class, 'destroy'])->name('promocion.destroy');
+
+Route::get('/promociones/pdf', [PromocionController::class, 'pdf'])->name('promocion.pdf');

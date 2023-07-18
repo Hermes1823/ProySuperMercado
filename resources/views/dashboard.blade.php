@@ -303,6 +303,12 @@
                                             </a>
                                         </li>
 
+                                        <li>
+                                            <a href="{{route('promocion.index')}}">
+                                                <span class="sub-item">Promociones</span>
+                                            </a>
+                                        </li>
+
                                     </ul>
                                 </div>
                             </li>
