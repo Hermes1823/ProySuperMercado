@@ -107,4 +107,10 @@
         <br>
         <a href="{{ route('EmpleadoCancelar') }}" class="btn btn-primary"><i class="fas fa-times-circle"></i>Salir</a>
     </div>
+    <script>
+        function mensaje() {
+        $('#idrol').select2();
+        }
+        setTimeout(mensaje,500);
+    </script>
 @endsection

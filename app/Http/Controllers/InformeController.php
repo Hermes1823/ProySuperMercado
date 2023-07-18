@@ -5,6 +5,7 @@ use App\Models\Informe;
 use App\Models\Almacen;
 use App\Models\Montacarga;
 use App\Models\Almacenero;
+use App\Models\Producto;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Barryvdh\DomPDF\Facade\PDF; //use PDF
@@ -13,7 +14,8 @@ use Illuminate\Http\Request;
 class InformeController extends Controller
 {
     const PAGINATION=7;
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $busqueda=$request->get('buscarpor');
         $informes=Informe::where('idalmacen','like','%'.$busqueda.'%')
         ->where('estado','=','1')
@@ -44,10 +46,11 @@ class InformeController extends Controller
                     $informes->save();
 
                     $montacarD=Montacarga::all();
-
                     $almacenes=Almacen::all();
+                    $productos=Producto::all();
                     $almacenD=Almacenero::where('idalmacen','=',$request->idalmacen)->paginate();
-                    $pdf = PDF::loadView('Informe.pdf',['almacenD'=>$almacenD,'montacarD'=>$montacarD,'almacenes'=>$almacenes]);
+                    $perso = User::whereIn('id', $almacenD->pluck('idusuario'))->get();
+                    $pdf = PDF::loadView('Informe.pdf',['productos'=>$productos,'perso'=>$perso,'almacenD'=>$almacenD,'montacarD'=>$montacarD,'almacenes'=>$almacenes]);
                     return $pdf->stream();
     }
 
@@ -61,7 +64,7 @@ class InformeController extends Controller
     }
 
     public function confirmar($id){
-        if (Auth::user()->rol=='Administrativo'){ //boton eliminar
+        if (Auth::user()->rol==0){ //boton eliminar
             $informes=Informe::findOrFail($id);
             return view('Informe.confirmar',compact('informes'));
         }else{
