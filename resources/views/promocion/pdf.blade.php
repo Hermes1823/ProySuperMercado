@@ -9,13 +9,18 @@
             font-family: Arial, sans-serif;
         }
         
+        h1 {
+            color: blue;
+        }
+        
         .table {
             width: 100%;
             border-collapse: collapse;
         }
         
         .table thead th {
-            background-color: #f2f2f2;
+            background-color: green;
+            color: white;
             text-align: left;
             padding: 10px;
             border-bottom: 1px solid #ddd;
@@ -29,6 +34,10 @@
         .empty-row td {
             text-align: center;
             font-weight: bold;
+        }
+        
+        .highlight {
+            background-color: yellow;
         }
     </style>
 </head>
@@ -52,7 +61,7 @@
                 </tr>
             @else
                 @foreach ($promociones as $promocion)
-                    <tr>
+                    <tr class="highlight">
                         <td>{{ $promocion->id_promocion }}</td>
                         <td>{{ $promocion->descripcion }}</td>
                         <td>{{ $promocion->fecha_inicio }}</td>
