@@ -34,45 +34,42 @@ class EncuestaController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-{
-    $clientes = Cliente::all(); // Obtener todos los clientes
-    $preguntas = Pregunta::all(); // Obtener todas las preguntas
+    {
+        $clientes = Cliente::all();
+        $preguntas = Pregunta::all();
 
-    return view('encuesta.create', compact('clientes', 'preguntas'));
-}
+        return view('encuesta.create', compact('clientes', 'preguntas'));
+    }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        // Validar los campos del formulario
-        $request->validate([
-            'cliente_id' => 'required|exists:clientes,id_clientes',
-            'respuestas.*' => 'required|string',
-        ]);
-    
-        // Obtener el cliente y las respuestas del formulario
-        $clienteId = $request->input('id_cliente');
-        $respuestas = $request->input('respuestas');
-    
-        // Crear una nueva encuesta y guardar el cliente asociado
-        $encuesta = new Encuesta();
-        $encuesta->id_cliente= $clienteId;
-        $encuesta->save();
-    
-        // Guardar las respuestas de la encuesta
-        foreach ($respuestas as $respuesta) {
-            // Crear una nueva respuesta y asignar la encuesta y la respuesta
-            $encuestaRespuesta = new Respuesta();
-            $encuestaRespuesta->id_encuesta = $encuesta->id_encuesta;
-            $encuestaRespuesta->respuesta = $respuesta;
-            $encuestaRespuesta->save();
-        }
-    
-        // Redireccionar a la vista de lista de encuestas o mostrar un mensaje de éxito
-        return redirect()->route('encuesta.index')->with('datos', 'Encuesta guardada exitosamente.');
+{
+    $request->validate([
+        'id_cliente' => 'required|exists:clientes,id_cliente',
+        'nombre_encuesta' => 'required|string',
+        'preguntas' => 'required|array',
+        'preguntas.*' => 'exists:preguntas,id_pregunta',
+        'respuestas' => 'required|array',
+        'respuestas.*' => 'required|string',
+    ]);
+
+    $encuesta = new Encuesta();
+    $encuesta->id_cliente = $request->input('id_cliente');
+    $encuesta->nombre_encuesta = $request->input('nombre_encuesta');
+    $encuesta->save();
+
+    $preguntas = $request->input('preguntas');
+    $respuestas = $request->input('respuestas');
+
+    foreach ($preguntas as $key => $preguntaId) {
+        $encuesta->preguntas()->attach($preguntaId, ['respuesta' => $respuestas[$key]]);
     }
+
+    return redirect()->route('encuesta.index')->with('datos', 'Encuesta guardada exitosamente.');
+
+}
     /**
      * Display the specified resource.
      */

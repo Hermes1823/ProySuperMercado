@@ -7,16 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Encuesta extends Model
 {
-    protected $table = 'encuestas';
     protected $primaryKey = 'id_encuesta';
-    public $timestamps = false;
-
-    protected $fillable = [
-        'nombre_encuesta',
-        'id_pregunta',
-        'id_cliente',
-        // otros campos que desees permitir asignación masiva
-    ];
+    protected $fillable = ['nombre_encuesta', 'id_pregunta', 'id_cliente'];
 
     public function pregunta()
     {
@@ -26,5 +18,10 @@ class Encuesta extends Model
     public function cliente()
     {
         return $this->belongsTo(Cliente::class, 'id_cliente');
+    }
+
+    public function preguntas()
+    {
+        return $this->belongsToMany(Pregunta::class, 'preguntaencuestas', 'id_encuesta', 'id_pregunta');
     }
 }

@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pregunta extends Model
 {
-    protected $table = 'preguntas';
     protected $primaryKey = 'id_pregunta';
     protected $fillable = ['pregunta'];
+
+    public function encuestas()
+    {
+        return $this->belongsToMany(Encuesta::class, 'preguntaencuestas', 'id_pregunta', 'id_encuesta')
+        ->withPivot('respuesta');
+    }
 }
