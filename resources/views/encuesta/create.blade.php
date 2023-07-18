@@ -10,7 +10,7 @@
 
 <div class="card">
     <div class="card-header">
-        <h3 id="titulo" class="card-title">ENCUESTAS</h3>
+        <h3 id="titulo" class="card-title">ENCUESTAS A LOS CLIENTES</h3>
     </div>
     <div class="card-body">
         <h4><strong>Nombre de la encuesta:</strong></h4>
