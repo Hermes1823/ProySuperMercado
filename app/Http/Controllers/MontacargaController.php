@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Montacarga;
+use App\Models\Almacen;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+
 
 class MontacargaController extends Controller
 {
@@ -13,18 +15,19 @@ class MontacargaController extends Controller
 
     public function index(Request $request)
     {
+        $almacenes= Almacen::all();
         $busqueda = $request->get('buscarpor');
         $montacargas = Montacarga::where('tipomontacarga', 'like', '%' . $busqueda . '%')
             ->where('estado', '=', '1')
             ->paginate($this::PAGINATION);;
-        return view('Montacarga.index', compact('montacargas', 'busqueda'));
+        return view('Montacarga.index', compact('montacargas', 'busqueda','almacenes'));
     }
 
     public function create()
     {
-        if (Auth::user()->rol == 'Persona') {   //boteon registrar
-
-            return view('Montacarga.create');
+        if (Auth::user()->rol == 0) {   //boteon registrar
+            $almacenes= Almacen::all();
+            return view('Montacarga.index',compact('almacenes'));
         } else {
             return redirect()->route('Montacarga.index')->with('datos', '..::No tiene Acceso ..::');
         }
@@ -63,6 +66,7 @@ class MontacargaController extends Controller
         } else {
             $montacarga->fotomontacarga = "imagenes/Imagen_default.png";
         }
+        $almacenes= Almacen::all();
         $montacarga->estado = '1';
         $montacarga->save();
 

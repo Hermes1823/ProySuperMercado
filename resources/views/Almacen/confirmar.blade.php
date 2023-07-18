@@ -4,7 +4,7 @@
 
 @section('contenido')
 <div class="container">
-    <h1 id="titulo" >Desea eliminar Almacen </h1>
+    <h1 id="titulo" >Desea eliminar Almacen</h1>
     <br>
         Nombre: {{$almacen->nombre}} Capacidad :{{$almacen->capacidad}}
     <form method="POST" action="{{route('Almacen.destroy',$almacen->id)}}">

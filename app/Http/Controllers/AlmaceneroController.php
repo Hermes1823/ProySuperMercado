@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Almacen;
 use App\Models\Almacenero;
 use App\Models\User;
+use App\Models\Producto;
 use App\Models\Montacarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,7 @@ class AlmaceneroController extends Controller
 
     public function index(Request $request)
     {
+
         $busqueda = $request->get('buscarpor');
         $almaceneros = Almacenero::select('*')->join('users', 'users.id', '=', 'almacenero.idusuario')
             ->join('montacarga', 'montacarga.id', '=', 'almacenero.idmontacarga')
@@ -24,7 +26,8 @@ class AlmaceneroController extends Controller
             $almacenes = Almacen::all();
             $usuarioss = User::all();
             $montacargas = Montacarga::all();
-        return view('Almacenero.index', compact('almaceneros','almacenes', 'usuarioss', 'montacargas', 'busqueda'));
+            $productos = Producto::all();
+        return view('Almacenero.index', compact('almaceneros','almacenes', 'usuarioss', 'montacargas', 'busqueda','productos'));
     }
 
     public function create()
@@ -34,7 +37,8 @@ class AlmaceneroController extends Controller
             $almacenes = Almacen::all();
             $usuarioss = User::all();
             $montacargas = Montacarga::all();
-            return view('Almacenero.create', compact('almacenes', 'usuarioss', 'montacargas'));
+            $productos = Producto::all();
+            return view('Almacenero.create', compact('almacenes', 'usuarioss', 'montacargas','productos'));
         } else {
             return redirect()->route('Almacenero.index')->with('datos', '..::No tiene Acceso ..::');
         }
@@ -43,22 +47,13 @@ class AlmaceneroController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate(
-            [
-                'celular' => 'required|min:9',
-                'fecha' => 'required',
-            ],
-            [
-                'celular.required' => 'Ingrese celular',
-                'celular.min' => 'Min 9 carácteres ',
-                'fecha.required' => 'Ingrese una Fecha',
-            ]
+
         );
         $almacenero = new Almacenero();
         $almacenero->idusuario = $request->idusuario;
         $almacenero->idalmacen = $request->idalmacen;
         $almacenero->idmontacarga = $request->idmontacarga;
-        $almacenero->celular = $request->celular;
-        $almacenero->sueldo = $request->sueldo;
+        $almacenero->idproducto = $request->idproducto;
         $almacenero->fecha = $request->fecha;
         $almacenero->detalle = $request->detalle;
         $almacenero->estado = '1';
@@ -76,25 +71,17 @@ class AlmaceneroController extends Controller
         }
     }
 
+
     public function update(Request $request, $id)
     {
         $data = request()->validate(
-            [
-                'celular' => 'required|min:9',
-                'fecha' => 'required',
-            ],
-            [
-                'celular.required' => 'Ingrese celular',
-                'celular.min' => 'Min 9 carácteres ',
-                'fecha.required' => 'Ingrese una Fecha',
-            ]
+
         );
         $almacenero = Almacenero::findOrFail($id);
         $almacenero->idusuario = $request->idusuario;
         $almacenero->idalmacen = $request->idalmacen;
         $almacenero->idmontacarga = $request->idmontacarga;
-        $almacenero->celular = $request->celular;
-        $almacenero->sueldo = $request->sueldo;
+        $almacenero->idproducto = $request->idproducto;
         $almacenero->fecha = $request->fecha;
         $almacenero->detalle = $request->detalle;
         $almacenero->save();

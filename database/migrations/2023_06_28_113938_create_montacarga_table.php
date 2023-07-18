@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('montacarga', function (Blueprint $table) {
             $table->id();
+            $table->integer('idAlmacen')->nullable();
             $table->string('marca')->nullable();
             $table->integer('altura')->nullable();
             $table->integer('capacidad')->nullable();
             $table->string('tipomontacarga')->nullable();
             $table->longText('fotomontacarga')->nullable();
             $table->integer('estado')->nullable();
+            $table->foreign('idAlmacen')->references('id')->on('almacen');
             $table->timestamps();
         });
     }

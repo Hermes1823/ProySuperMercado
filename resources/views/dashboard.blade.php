@@ -36,9 +36,9 @@
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link rel="stylesheet" href="/assets/css/demo.css">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-  
 
-        
+
+
         @yield('css')
         @livewireStyles
     </head>
@@ -200,7 +200,7 @@
                                             </a>
                                         </li>
 
-                                    
+
                                         <li>
                                             <a href="{{route('Almacenero.index')}}">
                                                 <span class="sub-item">Detalle Almacen</span>
@@ -230,9 +230,9 @@
                                         </li>
                                     </ul>
                                 </div>
-                                
+
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a data-toggle="collapse" href="#marketing">
                                     <i class="fas fa-shopping-basket" style="color: #ffffff;"></i>
@@ -241,7 +241,7 @@
                                 </a>
                                 <div class="collapse" id="marketing">
                                     <ul class="nav nav-collapse">
-                                       
+
                                         <li>
                                             <a href="{{route('cliente.index')}}">
                                                 <span class="sub-item">Clientes</span>
@@ -277,7 +277,7 @@
                                 </div>
                             </li>
 
-                            
+
 
                             <li class="nav-item">
                                 <a data-toggle="collapse" href="#config">
@@ -296,6 +296,22 @@
                                         <li>
                                             <a href="{{route('indexU')}}">
                                                 <span class="sub-item">Usuarios</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="nav-item">
+                                <a data-toggle="collapse" href="#report">
+                                    <i class="fas fa-chart-bar"></i>
+                                    <p>Reportes</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="report">
+                                    <ul class="nav nav-collapse">
+                                        <li>
+                                            <a href="{{route('Informe.index')}}">
+                                                <span class="sub-item">Informe del almacén</span>
                                             </a>
                                         </li>
                                     </ul>

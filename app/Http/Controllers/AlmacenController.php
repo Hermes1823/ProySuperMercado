@@ -20,7 +20,7 @@ class AlmacenController extends Controller
 
     public function create()
     {
-        if (Auth::user()->rol=='Administrativo'){   //boteon registrar
+        if (Auth::user()->rol==0){   //boteon registrar
 
             return view('Almacen.create');
         } else{

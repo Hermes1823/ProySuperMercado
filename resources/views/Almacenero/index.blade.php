@@ -40,12 +40,12 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Nombre</th>
+                        <th scope="col">Usuario</th>
                         <th scope="col">Almacen</th>
-                        <th scope="col">Maquina</th>
-                        <th scope="col">Celular</th>
-                        <th scope="col">fecha</th>
-                        <th scope="col">detalle</th>
+                        <th scope="col">Montacarga</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Detalle</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -82,7 +82,12 @@
                                     @endforeach
                                 </td>
                                 <td>
-                                    {{ $item->celular }}
+                                    @foreach ($productos as $itemproduc)
+                                        @if ($itemproduc->id == $empleado->idProducto)
+                                            {{ $itemproduc->nombre }}
+                                        @break
+                                        @endif
+                                    @endforeach
                                 </td>
                                 <td>
                                     {{ $item->fecha }}

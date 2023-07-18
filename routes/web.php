@@ -6,6 +6,7 @@ use App\Http\Controllers\Usuario1Controller;
 use App\Http\Controllers\AlmacenController;
 use App\Http\Controllers\MontacargaController;
 use App\Http\Controllers\AlmaceneroController;
+use App\Http\Controllers\InformeController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\CuponController;
 use App\Http\Controllers\ProductController;
@@ -78,6 +79,12 @@ Route::resource('Almacenero',AlmaceneroController::class);
 Route::get('Almacenerocancelar',[AlmaceneroController::class,'cancelar'])->name('Almacenero.cancelar');
 Route::get('confirmarAlma{id}/',[AlmaceneroController::class,'confirmar'])->name('Almacenero.confirmar');
 
+
+//Informe
+Route::resource('Informe',InformeController::class);
+Route::get('Informcancelar',[InformeController::class,'cancelar'])->name('Informe.cancelar');
+Route::get('confirmarInform{id}/',[InformeController::class,'confirmar'])->name('Informe.confirmar');
+
 //Cliente
 Route::get('/clientes', [ClienteController::class, 'index'])->name('cliente.index');
 Route::get('/clientes/create', [ClienteController::class, 'create'])->name('cliente.create');
@@ -109,9 +116,9 @@ Route::post('/preguntas', [PreguntaController::class, 'store'])->name('pregunta.
 Route::get('/preguntas/{id}/edit', [PreguntaController::class, 'edit'])->name('pregunta.edit');
 Route::put('/preguntas/{id}', [PreguntaController::class, 'update'])->name('pregunta.update');
 Route::delete('/preguntas/{id}', [PreguntaController::class, 'destroy'])->name('pregunta.destroy');
-Route::get('/pregunta/{id}/confirmar', [PreguntaController::class, 'confirmar'])->name('pregunta.confirmar'); 
+Route::get('/pregunta/{id}/confirmar', [PreguntaController::class, 'confirmar'])->name('pregunta.confirmar');
 
-//encuesta 
+//encuesta
 
 Route::get('/encuestas', [EncuestaController::class, 'index'])->name('encuesta.index');
 Route::get('/encuestas/create', [EncuestaController::class, 'create'])->name('encuesta.create');

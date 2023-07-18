@@ -52,27 +52,23 @@
                     </span>
                 @enderror
             </div>
+
+
             <div class="col-12 form-group">
-                <label class="control-label">Celular</label>
-                <input type="text" class="form-control @error('celular') is-invalid @enderror"
-                    placeholder="Ingrese el número de celular" name="celular" required pattern="[0-9]+">
-                @error('celular')
+                <label class="control-label">Producto id</label>
+                <select name="idproducto" id="idproducto"
+                    class="form-control @error('idproducto') is-invalid @enderror">
+                    @foreach ($productos as $item)
+                        <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                    @endforeach
+                </select>
+                @error('idproducto')
                     <span class="invalid feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
             </div>
 
-            <div class="col-12 form-group">
-                <label class="control-label">Sueldo</label>
-                <input type="number" step="0.01" class="form-control @error('sueldo') is-invalid @enderror"
-                    placeholder="Ingrese el sueldo" name="sueldo" required>
-                @error('sueldo')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
 
             <div class="col-12 form-group">
                 <label class="control-label">Fecha</label>
@@ -105,6 +101,7 @@
             $('#idusuario').select2();
             $('#idalmacen').select2();
             $('#idmontacarga').select2();
+            $('#idproducto').select2();
             }
             setTimeout(mensaje,500);
         </script>

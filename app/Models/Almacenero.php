@@ -11,7 +11,7 @@ class Almacenero extends Model
     protected $table = 'almacenero';
     protected $primaryKey = 'id';
     public $timestamps = false;
-    protected $fillable = ['idusuario', 'idalmacen', 'idmontacarga', 'celular', 'sueldo', 'fecha', 'detalle', 'estado'];
+    protected $fillable = ['idusuario', 'idalmacen', 'idmontacarga','idproducto', 'fecha', 'detalle', 'estado'];
 
 
 }
