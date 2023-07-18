@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Convocatoria;
+use App\Models\Participacion;
+use App\Models\Postulante;
+use App\Models\Examen;
 
 class ConvocatoriaController extends Controller
 {
@@ -98,5 +101,31 @@ class ConvocatoriaController extends Controller
 
     public function cancelar(){
         return redirect()->route('convocatoria.index')->with('datos','Acción cancelada...');
+    }
+
+    public function asignar($id){
+        $convocatoria = Convocatoria::findOrFail($id);
+        $postulantes = Postulante::get();
+        $participaciones = Participacion::query()->where('id_convocatoria', '=', $id)->paginate(10);
+        return view('convocatoria.asignar', compact('convocatoria','postulantes','participaciones'));
+    }
+
+    public function asignar_store(Request $request){
+        $participacion = new Participacion();
+        $participacion->id_postulante = $request->input('id_postulante');
+        $participacion->id_convocatoria = $request->input('id_convocatoria');
+        $examen = new Examen();
+        $examen->save();
+        $participacion->id_examen = $examen->id;
+        $participacion->save();
+        $id = Convocatoria::findOrFail($request->input('id_convocatoria'));
+        return redirect()->route('convocatoria.asignar', $id)->with('datos', 'Convocatoria guardada exitosamente');
+    }
+
+    public function calificar($id){
+        $convocatoria = Convocatoria::findOrFail($id);
+        $postulantes = Postulante::get();
+        $participaciones = Participacion::query()->where('id_convocatoria', '=', $id)->paginate(10);
+        return view('convocatoria.asginar', compact('convocatoria','postulantes','participaciones'));
     }
 }

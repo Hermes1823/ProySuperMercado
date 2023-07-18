@@ -10,7 +10,7 @@
                         <i class="fa fa-search search-icon"></i>
                     </button>
                 </div>
-                <input type="text" placeholder="Buscar por apellidos" class="form-control" value="{{ $busqueda }}"
+                <input type="text" placeholder="Buscar por descripción" class="form-control" value="{{ $busqueda }}"
                     name="buscarpor">
             </div>
         </form>
@@ -25,7 +25,7 @@
         </div>
         <div class="card-body">
 
-            <a href="{{route("postulante.create")}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Registro</a>
+            <a href="{{route("convocatoria.create")}}" class="btn btn-primary"><i class="fas fa-plus"></i>Nuevo Registro</a>
 
 
             <div id="mensaje">
@@ -41,30 +41,28 @@
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col">Apellidos</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Telefono</th>
-                        <th scope="col">Email</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Plazas</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if (count($postulantes) <= 0)
+                    @if (count($convocatorias) <= 0)
                         <tr>
-                            <td colspan="6"><b>No hay registros</b></td>
+                            <td colspan="4"><b>No hay registros</b></td>
                         </tr>
                     @else
-                        @foreach ($postulantes as $item)
+                        @foreach ($convocatorias as $item)
                             <tr>
-                                <td>{{$item->id_postulante}}</td>
-                                <td>{{ $item->apellidos }}</td>
-                                <td>{{ $item->nombre }}</td>
-                                <td>{{ $item->telefono}}</td>
-                                <td>{{ $item->email}}</td>
+                                <td>{{$item->id_convocatoria}}</td>
+                                <td>{{ $item->descripcion }}</td>
+                                <td>{{ $item->plazas }}</td>
                                 <td>
-                                    <a href="{{ route('postulante.edit',$item->id_postulante) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
+                                <a href="{{ route('convocatoria.asignar',$item->id_convocatoria) }}" class="btn btn-success btn-sm"><i class="fas fa-anchor"></i>Asignar</a>
+                                    <a href="{{ route('convocatoria.calificar',$item->id_convocatoria) }}" class="btn btn-warning btn-sm"><i class="fas fa-align-justify"></i>Calificar</a>
+                                    <a href="{{ route('convocatoria.edit',$item->id_convocatoria) }}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>
 
-                                    <a href="{{ route('postulante.confirmar', $item->id_postulante) }}" class="btn btn-danger btn-sm"><i
+                                    <a href="{{ route('convocatoria.confirmar', $item->id_convocatoria) }}" class="btn btn-danger btn-sm"><i
                                             class="fas fa-trash"></i>Eliminar</a>
 
                                 </td>
@@ -73,7 +71,7 @@
                     @endif
                 </tbody>
             </table>
-            {{ $postulantes->links() }}
+            {{ $convocatorias->links() }}
         </div>
 
     </div>
