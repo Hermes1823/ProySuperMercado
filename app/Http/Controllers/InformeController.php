@@ -44,9 +44,10 @@ class InformeController extends Controller
                     $informes->save();
 
                     $montacarD=Montacarga::all();
-                    $personas=user::all();
+
+                    $almacenes=Almacen::all();
                     $almacenD=Almacenero::where('idalmacen','=',$request->idalmacen)->paginate();
-                    $pdf = PDF::loadView('Informe.pdf',['almacenD'=>$almacenD,'personas'=>$personas,'montacarD'=>$montacarD]);
+                    $pdf = PDF::loadView('Informe.pdf',['almacenD'=>$almacenD,'montacarD'=>$montacarD,'almacenes'=>$almacenes]);
                     return $pdf->stream();
     }
 

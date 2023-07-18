@@ -83,22 +83,22 @@
                                 </td>
                                 <td>
                                     @foreach ($productos as $itemproduc)
-                                        @if ($itemproduc->id == $empleado->idProducto)
+                                        @if ($itemproduc->id == $empleado->idproducto)
                                             {{ $itemproduc->nombre }}
                                         @break
                                         @endif
                                     @endforeach
                                 </td>
                                 <td>
-                                    {{ $item->fecha }}
+                                    {{ $empleado->fecha }}
                                 </td>
                                 <td>
-                                    {{ $item->detalle }}
+                                    {{ $empleado->detalle }}
                                 </td>
                                 <td>
-                                    <a href="{{ route('Almacenero.edit', $item->id) }}" class="btn btn-info btn-sm"><i
+                                    <a href="{{ route('Almacenero.edit', $empleado->id) }}" class="btn btn-info btn-sm"><i
                                             class="fas fa-edit"></i>Editar</a>
-                                    <a href="{{ route('Almacenero.confirmar', $item->id) }}"
+                                    <a href="{{ route('Almacenero.confirmar', $empleado->id) }}"
                                         class="btn btn-danger btn-sm"><i class="fas fa-trash"></i>Eliminar</a>
 
                                 </td>

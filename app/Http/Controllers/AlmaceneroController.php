@@ -46,9 +46,14 @@ class AlmaceneroController extends Controller
 
     public function store(Request $request)
     {
-        $data = request()->validate(
-
-        );
+        $data = $request->validate([
+            'idusuario' => 'required',
+            'idalmacen' => 'required',
+            'idmontacarga' => 'required',
+            'idproducto' => 'required',
+            'fecha' => 'required',
+            'detalle' => 'required',
+        ]);
         $almacenero = new Almacenero();
         $almacenero->idusuario = $request->idusuario;
         $almacenero->idalmacen = $request->idalmacen;
@@ -58,6 +63,7 @@ class AlmaceneroController extends Controller
         $almacenero->detalle = $request->detalle;
         $almacenero->estado = '1';
         $almacenero->save();
+
         return redirect()->route('Almacenero.index')->with('datos', 'Registrados exitosamente...');
     }
 
@@ -74,9 +80,14 @@ class AlmaceneroController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = request()->validate(
-
-        );
+        $data = $request->validate([
+            'idusuario' => 'required',
+            'idalmacen' => 'required',
+            'idmontacarga' => 'required',
+            'idproducto' => 'required',
+            'fecha' => 'required',
+            'detalle' => 'required',
+        ]);
         $almacenero = Almacenero::findOrFail($id);
         $almacenero->idusuario = $request->idusuario;
         $almacenero->idalmacen = $request->idalmacen;
@@ -99,7 +110,7 @@ class AlmaceneroController extends Controller
 
 
     public function confirmar($id){
-        if (Auth::user()->rol=='Administrativo'){ //boton eliminar
+        if (Auth::user()->rol=='0'){ //boton eliminar
             $almacenero=Almacenero::findOrFail($id);
             return view('Almacenero.confirmar',compact('almacenero'));
         }else{

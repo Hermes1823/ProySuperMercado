@@ -27,32 +27,26 @@
         <thead>
             <tr>
                 <th scope="col">Id Almacen</th>
-                <th scope="col">Empleado</th>
+
                 <th scope="col">Fecha que almaceno</th>
             </tr>
         </thead>
         <tbody>
             @if (count($almacenD)<=0)
             <tr>
-                <td colspan="3"><i>:: NO HAY REGISTROS ::</i></td>
+                <td colspan="2"><i>:: NO HAY REGISTROS ::</i></td>
+
             </tr>
             @else
                 @foreach ($almacenD as $itemAl)
                 <tr>
                     <td>
                         @foreach ($almacenes as $itemalma)
-                        @if ($itemalma->id == $itemAl->idalmacen)
-                            {{ $itemalma->nombre}}
-                        @break
-                        @endif
-                    @endforeach
-                    </td>
-                    <td>
-                        @foreach ($personas as $itemUser)
-                            @if ($itemUser->id == $almacenD->idusuario)
-                                {{ $itemUser->name }}
-                                @break
+                            @if ($itemalma->id == $itemAl->idalmacen)
+                                {{ $itemalma->nombre}}
+                            @break
                             @endif
+
                         @endforeach
                     </td>
                     <td>
