@@ -13,6 +13,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequisitionOrdersController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\EncuestaController;
+use App\Http\Controllers\PostulanteController;
+use App\Http\Controllers\ConvocatoriaController;
 use App\Models\Pregunta;
 
 Route::get('/', function () {
@@ -123,3 +125,13 @@ Route::get('/pregunta/{id}/confirmar', [PreguntaController::class, 'confirmar'])
 Route::get('/encuestas', [EncuestaController::class, 'index'])->name('encuesta.index');
 Route::get('/encuestas/create', [EncuestaController::class, 'create'])->name('encuesta.create');
 Route::post('/encuestas', [EncuestaController::class, 'store'])->name('encuesta.store');
+
+// Postulantes
+Route::resource('postulante',PostulanteController::class);
+Route::get('postulante/cancelar',[PostulanteController::class,'cancelar'])->name('postulante.cancelar');
+Route::get('postulante/confirmar/{id}',[PostulanteController::class,'confirmar'])->name('postulante.confirmar');
+
+// Convocatorias
+Route::resource('convocatoria',ConvocatoriaController::class);
+Route::get('convocatoria/cancelar',[ConvocatoriaController::class,'cancelar'])->name('convocatoria.cancelar');
+Route::get('convocatoria/confirmar/{id}',[ConvocatoriaController::class,'confirmar'])->name('convocatoria.confirmar');

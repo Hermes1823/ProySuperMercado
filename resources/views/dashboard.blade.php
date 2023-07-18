@@ -234,6 +234,36 @@
                             </li>
 
                             <li class="nav-item">
+                                <a data-toggle="collapse" href="#RRHH">
+                                    <i class="fas fa-layer-group"></i>
+                                    <p>Subsistema RRHH</p>
+                                    <span class="caret"></span>
+                                </a>
+                                <div class="collapse" id="RRHH">
+                                    <ul class="nav nav-collapse">
+
+                                        <li>
+                                            <a href="{{route('postulante.index')}}">
+                                                <span class="sub-item">Postulantes</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('convocatoria.index')}}">
+                                                <span class="sub-item">Convocatorias</span>
+                                            </a>
+                                        </li>
+
+
+                                        <li>
+                                            <a href="{{route('postulante.index')}}">
+                                                <span class="sub-item">Resultados</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+
+                            <li class="nav-item">
                                 <a data-toggle="collapse" href="#marketing">
                                     <i class="fas fa-shopping-basket" style="color: #ffffff;"></i>
                                     <p>Subsistema Marketing</p>
