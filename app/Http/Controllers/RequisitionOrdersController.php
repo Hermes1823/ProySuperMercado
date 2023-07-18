@@ -76,16 +76,16 @@ class RequisitionOrdersController extends Controller
         $fechaActual = Carbon::now()->format('d-m-Y');
 
         try {
-            $ultimaRequisicion = RequisitionOrder::latest('id')->first();
+            $ultimaCotizacion = SolicitudCotizacion::latest('id')->first();
             $header = SolicitudCotizacion::join('proveedores as pro', 'pro.id', '=', 'solicitudes_cotizacion.idProveedor')
             ->select('pro.nombre as nombreProveedor', 'pro.ruc as rucProveedor')
-            ->where('solicitudes_cotizacion.id', $ultimaRequisicion->id)
+            ->where('solicitudes_cotizacion.id', $ultimaCotizacion->id)
             ->get();
             $productos=SolicitudCotizacion::join('ordenes_requisicion as or', 'or.id', '=', 'solicitudes_cotizacion.idOrdenRequisicion')
             ->join('ordenes_requisicion_detalle as ord','ord.idOrdenRequisicion','=','or.id')
             ->join('productos as p','p.id','=','ord.idProducto')
             ->select('p.nombre as nombreProducto','ord.cantidad')
-            ->where('or.id', $id)
+            ->where('solicitudes_cotizacion.id', $ultimaCotizacion->id)
             ->get();
             
         } catch (ModelNotFoundException $e) {

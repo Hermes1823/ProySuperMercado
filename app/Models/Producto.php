@@ -17,4 +17,9 @@ class Producto extends Model
         'stock',
         'photo',
     ];
+
+    public function promociones()
+    {
+        return $this->hasMany(Promocion::class, 'producto_id');
+    }
 }
