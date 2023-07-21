@@ -13,7 +13,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RequisitionOrdersController;
 use App\Http\Controllers\PreguntaController;
 use App\Http\Controllers\EncuestaController;
-
+use App\Http\Controllers\DetalleEncuestaController;
 use App\Http\Controllers\PostulanteController;
 use App\Http\Controllers\ConvocatoriaController;
 
@@ -135,9 +135,9 @@ Route::get('/pregunta/{id}/confirmar', [PreguntaController::class, 'confirmar'])
 
 //encuesta
 
-Route::get('/encuestas', [EncuestaController::class, 'index'])->name('encuesta.index');
-Route::get('/encuestas/create', [EncuestaController::class, 'create'])->name('encuesta.create');
-Route::post('/encuestas', [EncuestaController::class, 'store'])->name('encuesta.store');
+//Route::get('/encuestas', [EncuestaController::class, 'index'])->name('encuesta.index');
+//Route::get('/encuestas/create', [EncuestaController::class, 'create'])->name('encuesta.create');
+//Route::post('/encuestas', [EncuestaController::class, 'store'])->name('encuesta.store');
 
 // Postulantes
 Route::resource('postulante',PostulanteController::class);
@@ -166,3 +166,11 @@ Route::get('/promociones/{promocion}/confirmar', [PromocionController::class, 'c
 Route::delete('/promociones/{promocion}', [PromocionController::class, 'destroy'])->name('promocion.destroy');
 
 Route::get('/promociones/pdf', [PromocionController::class, 'pdf'])->name('promocion.pdf');
+
+//detalle encuesta
+
+Route::get('/detalleencuesta', [DetalleEncuestaController::class, 'index'])->name('detalleencuesta.index');
+Route::get('/detalleencuesta/create', [DetalleEncuestaController::class, 'create'])->name('detalleencuesta.create');
+
+// Ruta para guardar el detalle de encuesta
+Route::post('/detalleencuesta', [DetalleEncuestaController::class, 'store'])->name('detalleencuesta.store');

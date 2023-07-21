@@ -300,7 +300,7 @@
 
 
                                         <li>
-                                            <a href="{{route('encuesta.index')}}">
+                                            <a href="{{route('detalleencuesta.index')}}">
                                                 <span class="sub-item">Encuestas de satisfaccion</span>
                                             </a>
                                         </li>

@@ -1,8 +1,6 @@
-
 @extends('dashboard')
 
 @section('titulo', 'INICIO')
-
 @section('buscar')
     <div class="collapse" id="search-nav">
         <form class="navbar-left navbar-form nav-search mr-md-3" method="GET" role="search">
@@ -20,12 +18,15 @@
 @endsection
 
 @section('contenido')
-
     <div class="card">
         <div class="card-header">
-            <h3 id="titulo" class="card-title">ENCUESTAS</h3>
+            <h3 id="titulo" class="card-title">LISTADO DE DETALLE DE ENCUESTAS</h3>
         </div>
         <div class="card-body">
+            <a href="{{ route('detalleencuesta.create') }}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nuevo Registro
+            </a>
+
             <div id="mensaje">
                 @if (session('datos'))
                     <div class="alert alert-warning alert-dismissible fade show mt-3 emergente" role="alert"
@@ -35,40 +36,33 @@
                 @endif
             </div>
 
-            <a href="{{ route('encuesta.create') }}" class="btn btn-primary">LLENAR ENCUESTA</a>
-
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Pregunta</th>
+                        <th scope="col">ID Cliente</th>
+                        <th scope="col">ID Pregunta</th>
                         <th scope="col">Respuesta</th>
+                        <th scope="col">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($preguntas->isEmpty())
+                    @if (count($detalleEncuestas) <= 0)
                         <tr>
-                            <td colspan="3"><b>No hay preguntas disponibles</b></td>
+                            <td colspan="4"><b>No hay registros</b></td>
                         </tr>
                     @else
-                        @foreach ($preguntas as $pregunta)
+                        @foreach ($detalleEncuestas as $detalleEncuesta)
                             <tr>
-                                <td>{{ $pregunta->id_pregunta }}</td>
-                                <td>{{ $pregunta->pregunta }}</td>
-                                <td>
-                                    <!-- Mostrar la respuesta correspondiente a la pregunta -->
-                                    @foreach ($encuestas as $encuesta)
-                                        @if ($encuesta->id_pregunta === $pregunta->id_pregunta)
-                                            {{ $encuesta->respuesta }}
-                                        @endif
-                                    @endforeach
-                                </td>
+                                <td>{{ $detalleEncuesta->id_cliente }}</td>
+                                <td>{{ $detalleEncuesta->id_pregunta }}</td>
+                                <td>{{ $detalleEncuesta->respuesta }}</td>
+                                
                             </tr>
                         @endforeach
                     @endif
                 </tbody>
             </table>
-
+            {{ $detalleEncuestas->links() }}
         </div>
     </div>
 @endsection

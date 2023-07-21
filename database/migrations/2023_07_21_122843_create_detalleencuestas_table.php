@@ -9,24 +9,26 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('preguntaencuestas', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('detalleencuestas', function (Blueprint $table) {
+            $table->unsignedInteger('id_cliente');
             $table->unsignedInteger('id_pregunta');
-            $table->unsignedInteger('id_encuesta');
-            $table->timestamps();
+            $table->text('respuesta');
 
+            $table->primary(['id_cliente', 'id_pregunta']);
+
+            $table->foreign('id_cliente')->references('id_cliente')->on('clientes')->onDelete('cascade');
             $table->foreign('id_pregunta')->references('id_pregunta')->on('preguntas')->onDelete('cascade');
-            $table->foreign('id_encuesta')->references('id_encuesta')->on('encuestas')->onDelete('cascade');
+
+            $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('respuestaencuestas');
+        Schema::dropIfExists('detalleencuestas');
     }
 };
