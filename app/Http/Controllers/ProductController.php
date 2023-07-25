@@ -90,9 +90,5 @@ class ProductController extends Controller
         $producto->save();
         
         return json_encode(['msg' => $producto , "nuevaImagen" => $existeNuevaImagen]);
-    }
-
-
-
+    } 
 }
-
