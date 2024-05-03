@@ -35,9 +35,9 @@ class ProductComponent extends Component
         'productos.id')
         ->join('marcas', 'productos.idMarca', '=', 'marcas.id')
         ->join('categorias', 'productos.idCategoria', '=', 'categorias.id')
-        ->orWhere('categorias.name', 'ILIKE', '%' . $this->search . '%')
-        ->orWhere('marcas.name', 'ILIKE', '%' . $this->search . '%')
-        ->orWhere('productos.nombre', 'ILIKE', '%' . $this->search . '%')
+        ->orWhere('categorias.name', 'LIKE', '%' . $this->search . '%')
+        ->orWhere('marcas.name', 'LIKE', '%' . $this->search . '%')
+        ->orWhere('productos.nombre', 'LIKE', '%' . $this->search . '%')
         ->orderBy('productos.id')
         ->paginate(8);
 

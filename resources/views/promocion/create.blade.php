@@ -16,11 +16,14 @@
                 </div>
                 <div class="form-group">
                     <label for="producto">Producto:</label>
-                    <select class="form-control" id="producto" name="producto" required>
+                   {{-- <select class="form-control" id="producto" name="producto" required>
                         @foreach($productos as $producto)
                             <option value="{{ $producto->id }}">{{ $producto->nombre }}</option>
                         @endforeach
-                    </select>
+                    </select> --}}
+                    
+                    <input type="text" class="form-control" id="producto" name="producto" required>
+
                 </div>
                 <div class="form-group">
                     <label for="fecha_inicio">Fecha de Inicio:</label>

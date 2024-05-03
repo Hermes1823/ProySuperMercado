@@ -174,3 +174,8 @@ Route::get('/detalleencuesta/create', [DetalleEncuestaController::class, 'create
 
 // Ruta para guardar el detalle de encuesta
 Route::post('/detalleencuesta', [DetalleEncuestaController::class, 'store'])->name('detalleencuesta.store');
+
+
+Route::get('/ir-al-segundo-proyecto', function () {
+    return redirect('http://localhost:8081');
+})->name('segundo');

@@ -11,5 +11,11 @@ class Montacarga extends Model
     protected $table = 'montacarga';
     protected $primaryKey = 'id';
     public $timestamps = false;
-    protected $fillable = ['idAlma','marca','altura','capacidad','tipomontacarga','fotomontacarga','estado'];
+    protected $fillable = ['idAlmacen','marca','altura','capacidad','tipomontacarga','fotomontacarga','estado']; // Cambio en esta línea
+
+    // Definición de la relación con Almacen
+    public function almacen()
+    {
+        return $this->belongsTo(Almacen::class, 'idAlmacen', 'id'); // Cambio en esta línea
+    }
 }

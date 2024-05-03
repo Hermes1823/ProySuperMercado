@@ -26,5 +26,10 @@ class ProveedorSeeder extends Seeder
             'nombre' => 'Clorox',
             'ruc' => '20264846855',
         ]);
+
+
+       
+
+
     }
 }

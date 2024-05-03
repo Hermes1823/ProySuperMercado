@@ -27,7 +27,7 @@ class UserSeeder extends Seeder
             'name' => "Castillo Sarmiento Jose Maria Hermes",
             'email' => "hermescallao47@gmail.com",
             'idRol' => 2,
-            'password' => Hash::make('HERMES'),
+            'password' => Hash::make('HERMES12345'),
            
         ]);
     }

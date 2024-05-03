@@ -44,6 +44,7 @@
                         <th scope="col">Ubicacion</th>
                         <th scope="col">Capacidad</th>
                         <th scope="col">Tipo</th>
+                        <th scope="col">Stock Mínimo</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -59,6 +60,7 @@
                                 <td>{{ $item->ubicacion }}</td>
                                 <td>{{ $item->capacidad }}</td>
                                 <td>{{ $item->tipoalmacenamiento }}</td>
+                                <td>{{ $item->capacidad*0.1}}</td>
                                 <td>
                                     <a href="{{ route('Almacen.edit', $item->id) }}" class="btn btn-info btn-sm"><i
                                             class="fas fa-edit"></i>Editar</a>

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('informe', function (Blueprint $table) {
             $table->id();
-            $table->integer('idalmacen')->nullable();
+            $table->bigInteger('idalmacen')->unsigned()->nullable(); // Cambio en esta línea
             $table->date('fecha')->nullable();
             $table->string('detalle')->nullable();
             $table->integer('estado')->nullable();

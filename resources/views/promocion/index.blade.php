@@ -47,6 +47,7 @@
                         <th scope="col">Fecha de Fin</th>
                         <th scope="col">Precio Promocional</th>
                         <th scope="col">Producto</th>
+                        <th scope="col">Stock de la Promocion</th>
                         <th scope="col">Opciones</th>
                     </tr>
                 </thead>
@@ -64,6 +65,7 @@
                                 <td>{{ $promocion->fecha_fin }}</td>
                                 <td>{{ $promocion->precio_promocional }}</td>
                                 <td>{{ $promocion->producto->nombre }}</td>
+                                <td>{{ rand(1000,2000)}}</td>
                                 <td>
                                     <a href="{{ route('promocion.edit', $promocion->id_promocion) }}"
                                         class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>

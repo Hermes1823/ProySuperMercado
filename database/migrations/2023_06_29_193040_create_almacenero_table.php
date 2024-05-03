@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('almacenero', function (Blueprint $table) {
             $table->id();
-            $table->integer('idusuario')->nullable();
-            $table->integer('idalmacen')->nullable();
-            $table->integer('idmontacarga')->nullable();
-            $table->integer('idproducto')->nullable();
+            $table->unsignedBigInteger('idusuario')->nullable(); // Cambio en esta línea
+            $table->unsignedBigInteger('idalmacen')->nullable();
+            $table->unsignedBigInteger('idmontacarga')->nullable();
+            $table->unsignedBigInteger('idproducto')->nullable();
             $table->date('fecha')->nullable();
             $table->string('detalle')->nullable();
             $table->integer('estado')->nullable();

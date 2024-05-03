@@ -93,17 +93,13 @@
                             {{-- Menu deplegable de Usuario --}}
                             <li class="nav-item dropdown hidden-caret">
                                 <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#" aria-expanded="false">
-                                    <div class="avatar-sm">
-                                        <img src="{{ Auth::user()->fotoPerfil}}" alt="..." class="avatar-img rounded-circle">
-                                    </div>
+                                    
                                 </a>
                                 <ul class="dropdown-menu dropdown-user animated fadeIn">
                                     <div class="dropdown-user-scroll scrollbar-outer">
                                         <li>
                                             <div class="user-box">
-                                                <div class="avatar-lg" style="text-align: center;">
-                                                    <img id="preview2" src="{{Auth::user()->fotoPerfil}}" alt="Imagen user" width="70px" height="250px" class="avatar-img rounded">
-                                                </div>
+                                                
                                                 <div class="u-text">
                                                     <h2>{{ Auth::user()->name }}</h2>
                                                     <p class="text-muted">{{ Auth::user()->email }}</p>
@@ -149,9 +145,7 @@
                 <div class="sidebar-wrapper scrollbar scrollbar-inner">
                     <div class="sidebar-content">
                         <div class="user">
-                            <div class="avatar-sm float-left mr-2">
-                                <img id="preview2" src="{{Auth::user()->fotoPerfil}}" alt="..."  class="avatar-img rounded-circle">
-                            </div>
+                            
                             <div class="info">
                                 <a href="{{route('dashboard')}}" class="nav-link">
                                     <span>
@@ -281,9 +275,22 @@
                                     <ul class="nav nav-collapse">
 
                                         <li>
+                                            <a href="{{ route('segundo') }}" class="btn btn-primary">tienda online</a>
+
+                                        </li>
+
+
+                                        <li>
                                             <a href="{{route('cliente.index')}}">
                                                 <span class="sub-item">Clientes</span>
                                             </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="{{route('cliente.index')}}">
+                                                <span class="sub-item">Clientes</span>
+                                            </a>
+                                            
                                         </li>
 
                                         <li>
@@ -320,6 +327,8 @@
                                     </ul>
                                 </div>
                             </li>
+
+                            
 
 
 
