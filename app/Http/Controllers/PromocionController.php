@@ -47,7 +47,7 @@ class PromocionController extends Controller
         // Validar los datos del formulario de creación
         $request->validate([
             'descripcion' => 'required',
-            // 'producto' => 'required|exists:productos,id',
+            'producto' => 'required|exists:productos,nombre',
             'fecha_inicio' => 'required|date',
             'fecha_fin' => 'required|date',
             'precio_promocional' => 'required|numeric',
@@ -58,8 +58,8 @@ class PromocionController extends Controller
             'descripcion' => $request->input('descripcion'),
             'producto_id' => $request->input('producto'),
             'fecha_inicio' => $request->input('fecha_inicio'),
-            // 'fecha_fin' => $request->input('fecha_fin'),
-            // 'precio_promocional' => $request->input('precio_promocional'),
+            'fecha_fin' => $request->input('fecha_fin'),
+            'precio_promocional' => $request->input('precio_promocional'),
         ]);
 
         // Redireccionar a la vista de index de promociones con un mensaje de éxito

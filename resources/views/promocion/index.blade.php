@@ -45,8 +45,9 @@
                         <th scope="col">Descripción</th>
                         <th scope="col">Fecha de Inicio</th>
                         <th scope="col">Fecha de Fin</th>
-                        <th scope="col">Precio Promocional</th>
+                       
                         <th scope="col">Producto</th>
+                        <th scope="col">Precio Promocional</th>
                         <th scope="col">Stock de la Promocion</th>
                         <th scope="col">Opciones</th>
                     </tr>
@@ -57,15 +58,19 @@
                             <td colspan="7"><b>No hay registros</b></td>
                         </tr>
                     @else
-                        @foreach ($promociones as $promocion)
+                    @php
+                    $stocks = [100, 20, 100, 50];
+                    @endphp
+                        @foreach ($promociones as $index => $promocion)
                             <tr>
                                 <td>{{ $promocion->id_promocion }}</td>
                                 <td>{{ $promocion->descripcion }}</td>
                                 <td>{{ $promocion->fecha_inicio }}</td>
                                 <td>{{ $promocion->fecha_fin }}</td>
-                                <td>{{ $promocion->precio_promocional }}</td>
+                            
                                 <td>{{ $promocion->producto->nombre }}</td>
-                                <td>{{ rand(1000,2000)}}</td>
+                                <td>{{ $promocion->precio_promocional }}</td>
+                                <td>{{ $stocks[$index] }}</td> 
                                 <td>
                                     <a href="{{ route('promocion.edit', $promocion->id_promocion) }}"
                                         class="btn btn-info btn-sm"><i class="fas fa-edit"></i>Editar</a>

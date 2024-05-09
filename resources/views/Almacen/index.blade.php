@@ -54,13 +54,16 @@
                             <td colspan="5"><b>No hay registros</b></td>
                         </tr>
                     @else
-                        @foreach ($almacenes as $item)
+                    @php
+                    $stocks = [100, 20, 100, 50];
+                    @endphp
+                        @foreach ($almacenes as $index =>$item)
                             <tr>
                                 <td>{{ $item->nombre }}</td>
                                 <td>{{ $item->ubicacion }}</td>
                                 <td>{{ $item->capacidad }}</td>
                                 <td>{{ $item->tipoalmacenamiento }}</td>
-                                <td>{{ $item->capacidad*0.1}}</td>
+                                <td>{{ $stocks[$index]}}</td>
                                 <td>
                                     <a href="{{ route('Almacen.edit', $item->id) }}" class="btn btn-info btn-sm"><i
                                             class="fas fa-edit"></i>Editar</a>
